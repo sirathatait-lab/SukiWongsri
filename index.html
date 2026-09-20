@@ -120,30 +120,106 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative bg-brand-dark text-white min-h-[540px] flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative bg-brand-dark text-white overflow-hidden py-16 sm:py-24 lg:py-32">
+        <!-- Background Image with Dark Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=80" alt="สุกี้วงษ์ศรี" class="w-full h-full object-cover opacity-35">
-            <div class="hero-overlay absolute inset-0"></div>
+            <img id="img-hero-bg" src="https://img2.pic.in.th/773249366_2320736365129020_898959217885143816_n.md.jpg" onerror="handleImgError(this)" alt="สุกี้วงษ์ศรี หม้อร้อน" class="w-full h-full object-cover object-center opacity-35 scale-105 animate-pulse" style="animation-duration: 10s;">
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-20">
-            <span class="inline-block bg-brand-gold/20 text-brand-goldlight px-4 py-1.5 rounded-full text-sm font-prompt font-medium border border-brand-gold/30 mb-6">
-                ✨ ต้นตำรับความอร่อย น้ำจิ้มสูตรเด็ด
-            </span>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-prompt leading-tight mb-6">
-                สุกี้วงษ์ศรี <br class="hidden sm:inline">
-                <span class="text-brand-gold">อร่อยเต็มจาน อิ่มเต็มใจ</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-300 font-sarabun max-w-2xl mx-auto mb-10 leading-relaxed">
-                เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ คัดสรรอย่างดี พร้อมน้ำจิ้มสุกี้รสเด็ดเข้มข้น หอมกลิ่นเต้าหู้ยี้และพริกกระเทียมสด
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#menu" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
-                    ดูเมนูอาหาร
-                </a>
-                <a href="#contact" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
-                    เส้นทางมายังร้าน
-                </a>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/90 text-white text-xs sm:text-sm font-prompt font-medium shadow-sm border border-red-400/30">
+                        <i class="fa-solid fa-utensils text-brand-goldlight"></i> 
+                        <span id="text-hero-badge" data-editable="true">สุกี้โบราณ ความอร่อยสืบทอดกว่า 60 ปี</span>
+                    </div>
+                    
+                    <h1 class="font-prompt text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                        <span id="text-hero-title1" data-editable="true">อร่อยเต็มจาน</span> <br>
+                        <span id="text-hero-title2" data-editable="true" class="text-brand-gold font-extrabold">อิ่มเต็มใจ</span>
+                    </h1>
+                    
+                    <p id="text-hero-desc" data-editable="true" class="text-gray-300 text-base sm:text-xl font-light max-w-2xl leading-relaxed">
+                        ลิ้มลองรสชาติสุกี้โบราณสูตรเด็ด เข้มข้น กลมกล่อม หอมกลิ่นกระทะเตาถ่าน ใชวัตถุดิบสดใหม่ คัดสรรอย่างพิถีพิถันเพื่อทุกจานของคุณ
+                    </p>
+
+
+                    <!-- Core USPs Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 font-prompt">
+                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
+                                <i class="fa-solid fa-carrot text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 id="text-usp1-title" data-editable="true" class="font-semibold text-sm text-white">วัตถุดิบสดใหม่</h4>
+                                <p id="text-usp1-sub" data-editable="true" class="text-xs text-gray-300">คัดเกรดคุณภาพทุกวัน</p>
+                            </div>
+                        </div>
+
+
+                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
+                                <i class="fa-solid fa-pepper-hot text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 id="text-usp2-title" data-editable="true" class="font-semibold text-sm text-white">น้ำจิ้มสูตรเด็ด</h4>
+                                <p id="text-usp2-sub" data-editable="true" class="text-xs text-gray-300">หอม ครบรส เข้มข้น</p>
+                            </div>
+                        </div>
+
+
+                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 id="text-usp3-title" data-editable="true" class="font-semibold text-sm text-white">สะอาด ถูกสุขอนามัย</h4>
+                                <p id="text-usp3-sub" data-editable="true" class="text-xs text-gray-300">ใส่ใจทำจานต่อจาน</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 font-prompt">
+                        <a href="#menu" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-xl text-base font-semibold shadow-lg shadow-red-900/40 transition transform active:scale-95">
+                            <i class="fa-solid fa-book-open"></i> ดูเมนูแนะนำทั้งหมด
+                        </a>
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white/15 hover:bg-white/25 text-white border border-white/30 px-8 py-3.5 rounded-xl text-base font-semibold transition backdrop-blur-sm">
+                            <i class="fa-solid fa-phone-volume"></i> โทรจอง / สอบถาม
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Hero Graphic Visual Box -->
+                <div class="lg:col-span-5 hidden lg:block">
+                    <div class="relative mx-auto max-w-md">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-red to-brand-gold opacity-50 blur-xl"></div>
+                        <div class="relative bg-brand-dark/90 rounded-3xl border border-white/15 p-6 space-y-5 text-center">
+                            <div class="relative group rounded-2xl overflow-hidden">
+                                <img id="img-hero-card" src="https://img2.pic.in.th/773249366_2320736365129020_898959217885143816_n.jpg" onerror="handleImgError(this)" alt="สุกี้หม้อร้อนทรงเครื่อง" class="rounded-2xl w-full h-64 object-cover shadow-lg transition duration-300 group-hover:scale-105">
+                                <button onclick="openSingleImgEditor('img-hero-card', 'รูปการ์ดแนะนำหน้าแรก')" class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2.5 py-1 rounded-lg backdrop-blur-sm hover:bg-brand-red transition opacity-0 group-hover:opacity-100">
+                                    <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนรูป
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between text-left px-2 font-prompt">
+                                <div>
+                                    <h3 id="text-hero-card-title" data-editable="true" class="text-lg font-bold text-white">สุกี้หม้อไฟโบราณทรงเครื่อง</h3>
+                                    <p id="text-hero-card-sub" data-editable="true" class="text-xs text-gray-400">เสิร์ฟพร้อมน้ำจิ้มสูตรลับประจำร้าน</p>
+                                </div>
+                                <span id="text-hero-card-price" data-editable="true" class="bg-brand-gold text-white font-bold text-lg px-3 py-1 rounded-xl shadow-sm">
+                                    ฿120.-
+                                </span>
+                            </div>
+                            <button onclick="quickAddToCart('สุกี้หม้อไฟโบราณทรงเครื่อง', 120)" class="w-full bg-brand-red hover:bg-brand-redhover text-white font-prompt py-2.5 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-plus"></i> เพิ่มลงตะกร้าสั่งอาหาร
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
