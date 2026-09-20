@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สุกี้วงษ์ศรี - อร่อยเต็มจาน อิ่มเต็มใจ (Suki Wongsi)</title>
+    <title>สุกี้วงษ์ศรี - อร่อยเต็มจาน อิ่มเต็มใจ (Suki Wongsri)</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,7 +57,6 @@
             color: #ffffff;
             border-color: #991B1B;
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -65,1325 +64,463 @@
             background: #F5F2EB;
         }
         ::-webkit-scrollbar-thumb {
-            background: #991B1B;
+            background: #D97706;
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-red selection:text-white pb-12">
+<body class="bg-brand-cream text-brand-dark antialiased">
 
-    <!-- Top Bar Notice -->
-    <div class="bg-brand-red text-white text-xs sm:text-sm py-2 px-4 text-center font-prompt flex justify-between items-center container mx-auto rounded-b-lg shadow-sm">
-        <div class="flex items-center gap-2 mx-auto sm:mx-0">
-            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-400 animate-ping"></span>
-            <span id="text-top-notice">เปิดบริการทุกวัน 10:30 - 22:00 น. | คลองสอง รังสิต-นครนายก 51</span>
-        </div>
-        <div class="hidden sm:flex items-center gap-4 text-xs">
-            <a href="tel:0928749987" class="hover:underline flex items-center gap-1">
-                <i class="fa-solid fa-phone"></i> <span id="text-top-phone">092-874-9987</span>
-            </a>
-            <span>|</span>
-            <span class="text-brand-goldlight font-medium">
-                <i class="fa-solid fa-star"></i> <span id="text-top-rating">คะแนนรีวิว 4.8 / 5.0</span>
-            </span>
-        </div>
-    </div>
-
-    <!-- Main Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-border shadow-sm transition-all duration-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white shadow-md group-hover:bg-brand-redhover transition">
-                    <i class="fa-solid fa-fire-burner text-2xl"></i>
-                </div>
-                <div>
-                    <span id="text-brand-name" class="font-prompt font-bold text-2xl text-brand-red tracking-tight leading-none block">สุกี้วงษ์ศรี</span>
-                    <span id="text-brand-sub" class="text-xs text-brand-muted font-medium block tracking-wider">SUKI WONGSI RESTAURANT</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex items-center space-x-6 font-prompt text-sm font-medium">
-                <a href="#home" class="text-brand-dark hover:text-brand-red transition">หน้าแรก</a>
-                <a href="#menu" class="text-brand-dark hover:text-brand-red transition">เมนูแนะนำ</a>
-                <a href="#about" class="text-brand-dark hover:text-brand-red transition">เกี่ยวกับร้าน</a>
-                <a href="#gallery" class="text-brand-dark hover:text-brand-red transition">แกลเลอรี</a>
-                <a href="#reviews" class="text-brand-dark hover:text-brand-red transition">รีวิวลูกค้า</a>
-                <a href="#contact" class="text-brand-dark hover:text-brand-red transition">ติดต่อเรา</a>
-            </nav>
-
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-2 sm:gap-2.5">
-
-                <button onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-redhover text-white font-prompt px-4 py-2.5 rounded-xl text-sm font-semibold shadow-md transition transform active:scale-95">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span>จองโต๊ะล่วงหน้า</span>
-                </button>
-
-                <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileMenu()" class="lg:hidden text-brand-dark p-2 rounded-lg hover:bg-brand-warmbg focus:outline-none">
-                    <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
-                </button>
+    <!-- Loading Overlay Screen -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-brand-cream flex flex-col items-center justify-center transition-opacity duration-300 opacity-100 pointer-events-auto">
+        <div class="relative flex items-center justify-center mb-4">
+            <div class="w-20 h-20 border-4 border-brand-red/20 border-t-brand-red rounded-full animate-spin"></div>
+            <div class="absolute w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
+                ส
             </div>
         </div>
+        <p class="font-prompt text-brand-dark text-lg font-semibold tracking-wide animate-pulse">
+            กำลังโหลดข้อมูล...
+        </p>
+    </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-brand-border px-4 pt-2 pb-6 space-y-3 font-prompt">
-            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium border-b border-gray-100">หน้าแรก</a>
-            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium border-b border-gray-100">เมนูแนะนำ</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium border-b border-gray-100">เกี่ยวกับร้าน</a>
-            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium border-b border-gray-100">แกลเลอรี</a>
-            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium border-b border-gray-100">รีวิวลูกค้า</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-brand-dark hover:text-brand-red font-medium">ติดต่อเรา</a>
-            
-            <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full mt-2 bg-brand-red text-white font-prompt py-3 rounded-xl font-semibold shadow-md text-center">
-                <i class="fa-solid fa-calendar-check mr-2"></i> โทรติดต่อเรา
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-md border-b border-brand-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="nav-link flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
+                    ส
+                </div>
+                <div>
+                    <span class="text-xl font-bold font-prompt text-brand-red block leading-tight">สุกี้วงษ์ศรี</span>
+                    <span class="text-xs text-brand-muted tracking-wider uppercase font-medium">Suki Wongsri</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#hero" class="nav-link text-brand-dark hover:text-brand-red transition-colors">หน้าแรก</a>
+                <a href="#highlights" class="nav-link text-brand-dark hover:text-brand-red transition-colors">จุดเด่นร้าน</a>
+                <a href="#menu" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เมนูแนะนำ</a>
+                <a href="#about" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เกี่ยวกับเรา</a>
+                <a href="#contact" class="nav-link text-brand-dark hover:text-brand-red transition-colors">ติดต่อ/พิกัดร้าน</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="tel:0812345678" class="bg-brand-red hover:bg-brand-redhover text-white px-5 py-2.5 rounded-full font-prompt font-medium transition-all shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>โทรสั่งอาหาร</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-dark focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
             </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">หน้าแรก</a>
+            <a href="#highlights" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">จุดเด่นร้าน</a>
+            <a href="#menu" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เมนูแนะนำ</a>
+            <a href="#about" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เกี่ยวกับเรา</a>
+            <a href="#contact" class="nav-link mobile-link block py-2 font-medium">ติดต่อ/พิกัดร้าน</a>
+            <a href="tel:0812345678" class="mt-4 w-full bg-brand-red text-white py-3 rounded-xl font-prompt font-medium flex items-center justify-center gap-2">
+                <i class="fa-solid fa-phone"></i> โทรสั่งอาหาร
+            </a>
         </div>
     </header>
 
-    <!-- Hero Banner Section -->
-    <section id="home" class="relative bg-brand-dark text-white overflow-hidden py-16 sm:py-24 lg:py-32">
-        <!-- Background Image with Dark Overlay -->
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-brand-dark text-white min-h-[520px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img id="img-hero-bg" src="https://img2.pic.in.th/773249366_2320736365129020_898959217885143816_n.md.jpg" 
-                 onerror="handleImgError(this)" 
-                 alt="สุกี้วงษ์ศรี หม้อร้อน" 
-                 class="w-full h-full object-cover object-center opacity-35 scale-105 animate-pulse" style="animation-duration: 10s;">
-            <div class="absolute inset-0 hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=80" alt="สุกี้วงษ์ศรี" class="w-full h-full object-cover opacity-35">
+            <div class="hero-overlay absolute inset-0"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/90 text-white text-xs sm:text-sm font-prompt font-medium shadow-sm border border-red-400/30">
-                        <i class="fa-solid fa-utensils text-brand-goldlight"></i> 
-                        <span id="text-hero-badge">สุกี้โบราณสูตรเด็ดคุณยวด ความอร่อยสืบทอดกว่า 60 ปี</span>
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-20">
+            <span class="inline-block bg-brand-gold/20 text-brand-goldlight px-4 py-1.5 rounded-full text-sm font-prompt font-medium border border-brand-gold/30 mb-6">
+                ✨ ต้นตำรับความอร่อย น้ำจิ้มสูตรเด็ด
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-prompt leading-tight mb-6">
+                สุกี้วงษ์ศรี <br class="hidden sm:inline">
+                <span class="text-brand-gold">อร่อยเต็มจาน อิ่มเต็มใจ</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 font-sarabun max-w-2xl mx-auto mb-10 leading-relaxed">
+                เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ คัดสรรอย่างดี พร้อมน้ำจิ้มสุกี้รสเด็ดเข้มข้น หอมกลิ่นเต้าหู้ยี้และพริกกระเทียมสด
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="nav-link w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
+                    ดูเมนูอาหาร
+                </a>
+                <a href="#contact" class="nav-link w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
+                    เส้นทางมายังร้าน
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="py-16 bg-brand-warmbg border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold font-prompt text-brand-dark mb-3">ทำไมต้องสุกี้วงษ์ศรี?</h2>
+                <p class="text-brand-muted">เอกลักษณ์ความอร่อยที่ทำให้ลูกค้าติดใจและกลับมาทานซ้ำเสมอ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-pepper-hot"></i>
                     </div>
-                    
-                    <h1 class="font-prompt text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                        <span id="text-hero-title1">อร่อยเต็มจาน</span> <br>
-                        <span id="text-hero-title2" class="text-brand-gold font-extrabold">อิ่มเต็มใจ</span>
-                    </h1>
-                    
-                    <p id="text-hero-desc" class="text-gray-300 text-base sm:text-xl font-light max-w-2xl leading-relaxed">
-                        ลิ้มลองรสชาติสุกี้โบราณสูตรเด็ด เข้มข้น กลมกล่อม หอมกลิ่นกระทะเตาถ่าน ใช้วัตถุดิบสดใหม่ คัดสรรอย่างพิถีพิถันเพื่อทุกจานของคุณ
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำจิ้มสูตรเด็ดดั้งเดิม</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        ปรุงสดใหม่ทุกวัน เข้มข้น กลมกล่อม หอมกลิ่นกระเทียมสดและพริกขี้หนูสวน
                     </p>
-
-                    <!-- Core USPs Badges -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 font-prompt">
-                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
-                                <i class="fa-solid fa-carrot text-lg"></i>
-                            </div>
-                            <div class="text-left">
-                                <h4 id="text-usp1-title" class="font-semibold text-sm text-white">วัตถุดิบสดใหม่</h4>
-                                <p id="text-usp1-sub" class="text-xs text-gray-300">คัดเกรดคุณภาพทุกวัน</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
-                                <i class="fa-solid fa-pepper-hot text-lg"></i>
-                            </div>
-                            <div class="text-left">
-                                <h4 id="text-usp2-title" class="font-semibold text-sm text-white">น้ำจิ้มสูตรเด็ด</h4>
-                                <p id="text-usp2-sub" class="text-xs text-gray-300">หอม ครบรส เข้มข้น</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                            <div class="w-10 h-10 rounded-lg bg-brand-red/80 flex items-center justify-center text-brand-goldlight shrink-0">
-                                <i class="fa-solid fa-shield-halved text-lg"></i>
-                            </div>
-                            <div class="text-left">
-                                <h4 id="text-usp3-title" class="font-semibold text-sm text-white">สะอาด ถูกสุขอนามัย</h4>
-                                <p id="text-usp3-sub" class="text-xs text-gray-300">ใส่ใจทำจานต่อจาน</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Call to action buttons -->
-                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 font-prompt">
-                        <a href="#menu" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-xl text-base font-semibold shadow-lg shadow-red-900/40 transition transform active:scale-95">
-                            <i class="fa-solid fa-book-open"></i> ดูเมนูแนะนำทั้งหมด
-                        </a>
-                        <button onclick="openBookingModal()" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white/15 hover:bg-white/25 text-white border border-white/30 px-8 py-3.5 rounded-xl text-base font-semibold transition backdrop-blur-sm">
-                            <i class="fa-solid fa-phone-volume"></i> โทรจอง / สอบถาม
-                        </button>
-                    </div>
                 </div>
 
-                <!-- Hero Graphic Visual Box -->
-                <div class="lg:col-span-5 hidden lg:block">
-                    <div class="relative mx-auto max-w-md">
-                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-red to-brand-gold opacity-50 blur-xl"></div>
-                        <div class="relative bg-brand-dark/90 rounded-3xl border border-white/15 p-6 space-y-5 text-center">
-                            <div class="relative group rounded-2xl overflow-hidden">
-                                <img id="img-hero-card" src="https://img2.pic.in.th/773249366_2320736365129020_898959217885143816_n.jpg" 
-                                     onerror="handleImgError(this)" 
-                                     alt="สุกี้หม้อร้อนทรงเครื่อง" 
-                                     class="rounded-2xl w-full h-64 object-cover shadow-lg transition duration-300 group-hover:scale-105">
-                                <button onclick="openSingleImgEditor('img-hero-card', 'รูปการ์ดแนะนำหน้าแรก')" class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2.5 py-1 rounded-lg backdrop-blur-sm hover:bg-brand-red transition opacity-0 group-hover:opacity-100">
-                                    <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนรูป
-                                </button>
-                            </div>
-                            <div class="flex items-center justify-between text-left px-2 font-prompt">
-                                <div>
-                                    <h3 id="text-hero-card-title" class="text-lg font-bold text-white">สุกี้หม้อไฟโบราณทรงเครื่อง</h3>
-                                    <p id="text-hero-card-sub" class="text-xs text-gray-400">เสิร์ฟพร้อมน้ำจิ้มสูตรลับประจำร้าน</p>
-                                </div>
-                                <span id="text-hero-card-price" class="bg-brand-gold text-white font-bold text-lg px-3 py-1 rounded-xl shadow-sm">
-                                    ฿120.-
-                                </span>
-                            </div>
-                            <a href="#menu" class="w-full bg-brand-red hover:bg-brand-redhover text-white font-prompt py-2.5 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-utensils"></i> ดูรายการเมนูทั้งหมด
-                            </a>
-                        </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-goldlight text-brand-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-drumstick-bite"></i>
                     </div>
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">วัตถุดิบสดใหม่ คัดเกรด</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เนื้อหมูหมัก นุ่มละมุนลิ้น อาหารทะเลสดใหม่ ผักสดสะอาด ส่งตรงจากฟาร์มทุกเช้า
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำซุปกลมกล่อม</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เคี่ยวนานกว่า 6 ชั่วโมงด้วยกระดูกหมูและผักหวานธรรมชาติ ให้รสสัมผัสหอมหวานกลมกล่อม
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recommended Menu Section -->
-    <section id="menu" class="py-16 sm:py-24 bg-brand-cream">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="flex flex-col sm:flex-row items-center justify-between mb-12 border-b border-brand-border pb-6 gap-4">
-                <div class="text-center sm:text-left">
-                    <span class="inline-block px-3 py-1 bg-brand-lightred text-brand-red text-xs font-prompt font-bold rounded-full mb-2 uppercase tracking-wider">Recommended Dishes</span>
-                    <h2 id="text-menu-section-title" class="font-prompt text-3xl sm:text-4xl font-bold text-brand-dark">เมนูแนะนำระดับตำนาน</h2>
-                    <p id="text-menu-section-sub" class="text-brand-muted text-sm mt-1">อร่อย สดใหม่ ทำจานต่อจาน เลือกสรรวัตถุดิบคุณภาพพร้อมรสชาติเข้มข้นโดนใจ</p>
-                </div>
-                <!-- Dynamic Quick Actions -->
-                <div class="flex gap-2">
-                    <button onclick="openAddNewMenuModal()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2.5 rounded-xl font-prompt text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
-                        <i class="fa-solid fa-plus-circle"></i> เพิ่มเมนูอาหารใหม่
-                    </button>
-                </div>
-            </div>
+    <!-- Menu Showcase Section -->
+    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Our Menu</span>
+            <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-4">รายการอาหารแนะนำ</h2>
+            <p class="text-brand-muted">เลือกชมเมนูสุกี้จานเดี่ยว หม้อไฟ และของทานเล่นรสเลิศ</p>
+        </div>
 
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3 mb-10 font-prompt text-sm font-medium">
-                <button class="tab-btn active px-6 py-2.5 rounded-full border border-brand-border font-prompt text-sm font-medium transition-all" onclick="filterMenu('all', this)">
+        <!-- Menu Category Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+            <button class="tab-btn active px-6 py-2.5 rounded-full border border-brand-border font-prompt text-sm font-medium transition-all" onclick="filterMenu('all', this)">
                 ทั้งหมด
             </button>
             <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('single', this)">
                 สุกี้จานเดี่ยว
             </button>
             <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('combo', this)">
-                ข้าวขาหมู
-            </button>
-            <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('snack', this)">
-                ข้าวผัด
-            </button>
-            <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('snack', this)">
-                ข้าวกระเพรา
-            </button>
-            <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('snack', this)">
-                ราดหน้า/ผัดซีอิ๊ว
-            </button>
-            <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('snack', this)">
-                หมูสะเต๊ะ
+                ชุดสุกี้หม้อไฟ
             </button>
             <button class="tab-btn px-6 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('snack', this)">
                 ของทานเล่น & เครื่องดื่ม
             </button>
-            </div>
-
-            <!-- Menu Cards Grid -->
-            <div id="menuContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Rendered dynamically by JS -->
-            </div>
         </div>
-    </section>
 
-    <!-- About Us & Location Section -->
-    <section id="about" class="py-16 sm:py-24 bg-brand-warmbg border-y border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Column: Store Story -->
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="inline-block px-3 py-1 bg-brand-lightred text-brand-red text-xs font-prompt font-bold rounded-full">Story of Suki Wongsi</span>
-                    <h2 class="font-prompt text-3xl sm:text-4xl font-bold text-brand-dark leading-tight">
-                        <span id="text-story-head1">จุดเริ่มต้นความอร่อย</span> <br>
-                        <span id="text-story-head2" class="text-brand-red">จากรุ่นสู่รุ่น...</span>
-                    </h2>
-                    
-                    <p id="text-story-p1" class="text-brand-muted text-base leading-relaxed">
-                        <strong class="text-brand-dark">"สุกี้วงษ์ศรี"</strong> เริ่มต้นขึ้นจากตำนานสูตรน้ำจิ้มสุกี้โบราณอันเข้มข้นของคุณยวด อดีตแม่ครัวภัตตาคารจีน ที่ถ่ายทอดเคล็ดลับความอร่อย และการเคี่ยวซอสด้วยเตาถ่านอย่างพิถีพิถัน
+        <!-- Menu Item Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Item 1 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="single">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80" alt="สุกี้แห้งหมูหมัก" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <span class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow">
+                        ยอดนิยม 🔥
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">สุกี้แห้งหมูหมักนุ่ม</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿65</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        สุกี้ผัดแห้งหอมกลิ่นกระทะ หมูหมักสูตรเฉพาะนุ่มละมุน พร้อมผักสดและน้ำจิ้มสุกี้เข้มข้น
                     </p>
+                </div>
+            </div>
 
-                    <p id="text-story-p2" class="text-brand-muted text-base leading-relaxed">
-                        เรายึดมั่นในการทำอาหารจานเดียวสดใหม่จานต่อจาน ผัดด้วยไฟแรงให้ได้ความหอมกลิ่นกระทะที่เป็นเอกลักษณ์ เพื่อให้ทุกจานที่ส่งถึงมือลูกค้าเต็มไปด้วยความตั้งใจและรสชาติระดับตำนาน
+            <!-- Item 2 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="single">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="สุกี้น้ำทะเลสด" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow">
+                        แนะนำ ⭐
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">สุกี้น้ำทะเลรวมมิตร</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿85</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        กุ้งตัวโต ปลาหมึกสดกรอบ และปลาเส้น ในน้ำซุปรสกลมกล่อม ซดร้อนๆ คล่องคอ
                     </p>
-
-                    <!-- Core Strengths -->
-                    <div class="grid grid-cols-3 gap-4 pt-2 text-center font-prompt">
-                        <div class="p-3 bg-white rounded-xl border border-brand-border shadow-sm">
-                            <i class="fa-solid fa-leaf text-2xl text-brand-red mb-1"></i>
-                            <h4 id="text-feat1" class="font-bold text-xs text-brand-dark">สดใหม่ทุกวัน</h4>
-                        </div>
-                        <div class="p-3 bg-white rounded-xl border border-brand-border shadow-sm">
-                            <i class="fa-solid fa-fire text-2xl text-brand-gold mb-1"></i>
-                            <h4 id="text-feat2" class="font-bold text-xs text-brand-dark">สูตรดั้งเดิม</h4>
-                        </div>
-                        <div class="p-3 bg-white rounded-xl border border-brand-border shadow-sm">
-                            <i class="fa-solid fa-heart text-2xl text-red-500 mb-1"></i>
-                            <h4 id="text-feat3" class="font-bold text-xs text-brand-dark">บริการใส่ใจ</h4>
-                        </div>
-                    </div>
                 </div>
-
-                <!-- Right Column: Location & Map Details -->
-                <div class="lg:col-span-6">
-                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border shadow-md space-y-6">
-                        <h3 class="font-prompt font-bold text-xl text-brand-dark flex items-center gap-2 border-b border-brand-border pb-4">
-                            <i class="fa-solid fa-location-dot text-brand-red"></i> ที่ตั้งร้านและเวลาทำการ
-                        </h3>
-
-                        <ul class="space-y-4 font-prompt text-sm text-brand-dark">
-                            <li class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-brand-lightred text-brand-red flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-map-pin"></i>
-                                </div>
-                                <div>
-                                    <strong class="block font-semibold">พิกัดร้าน:</strong>
-                                    <span id="text-loc-address" class="text-brand-muted">คลองสอง รังสิต-นครนายก 51 (หน้าโรงพยาบาลบางปะกอกรังสิต 2)</span>
-                                </div>
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-brand-goldlight text-brand-gold flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div>
-                                    <strong class="block font-semibold">เวลาเปิด - ปิด:</strong>
-                                    <span id="text-loc-hours" class="text-brand-muted">เปิดให้บริการทุกวัน เวลา 10:30 - 22:00 น.</span>
-                                </div>
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div>
-                                    <strong class="block font-semibold">เบอร์โทรศัพท์สั่งอาหาร / จองโต๊ะ:</strong>
-                                    <a href="tel:0928749987" class="text-brand-red font-bold hover:underline">
-                                        <span id="text-loc-phone">092-874-9987</span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <!-- Google Maps Embed Frame -->
-                        <div class="w-full h-52 rounded-2xl overflow-hidden border border-brand-border shadow-inner">
-                            <iframe src="https://maps.google.com/maps?q=Bangpakok2%20Hospital&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Item 3 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="combo">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=800&q=80" alt="ชุดสุกี้หม้อไฟชุดใหญ่" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <span class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow">
+                        สำหรับ 2-3 ท่าน
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">ชุดสุกี้วงษ์ศรีหม้อไฟ</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿299</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        ชุดหมูรวมมิตร วุ้นเส้น จานผักสดใหญ่ ไข่ไก่สด และน้ำจิ้มสุกี้เหยือกใหญ่
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="single">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="สุกี้แห้งไก่" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">สุกี้แห้งไก่หมักนุ่ม</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿60</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เนื้ออกไก่นุ่ม ไร้มัน ผัดกับผักกวางตุ้ง ผักกาดขาว และวุ้นเส้นเหนียวนุ่ม
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="snack">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80" alt="เกี๊ยวกรอบทอด" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">เกี๊ยวกรอบไส้หมูเด้ง</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿50</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เกี๊ยวทองกรอบกริ๊บ ไส้หมูเด้งแน่นๆ ทานคู่กับน้ำจิ้มบ๊วยกอหวานอร่อย
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all" data-category="snack">
+                <div class="relative h-52 overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="น้ำเก๊กฮวยเย็น" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-2">
+                        <h3 class="text-xl font-bold font-prompt text-brand-dark">น้ำเก๊กฮวยสูตรโบราณ</h3>
+                        <span class="text-xl font-bold font-prompt text-brand-red">฿25</span>
+                    </div>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        ต้มสด หวานกำลังดี หอมกลิ่นดอกเก๊กฮวยแท้ ดับกระหายคลายร้อน
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-16 sm:py-24 bg-brand-cream">
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-warmbg border-t border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between mb-12 border-b border-brand-border pb-6 gap-4">
-                <div class="text-center sm:text-left">
-                    <span class="inline-block px-3 py-1 bg-brand-lightred text-brand-red text-xs font-prompt font-bold rounded-full mb-2 uppercase tracking-wider">Photo Gallery</span>
-                    <h2 id="text-gallery-title" class="font-prompt text-3xl sm:text-4xl font-bold text-brand-dark">บรรยากาศและภาพเมนูอาหาร</h2>
-                </div>
-                <button onclick="openImageManagerModal()" class="bg-brand-red hover:bg-brand-redhover text-white px-4 py-2 rounded-xl text-xs font-prompt font-semibold flex items-center gap-1.5 shadow-sm transition">
-                    <i class="fa-solid fa-link"></i> แทรกลิงก์รูปแกลเลอรี
-                </button>
-            </div>
-
-            <!-- Gallery Grid -->
-            <div id="galleryContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Gallery Item 1 -->
-                <div class="relative group h-64 rounded-2xl overflow-hidden border border-brand-border shadow-sm">
-                    <img id="img-gallery-1" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" onerror="handleImgError(this)" alt="สุกี้ผัดสดใหม่" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center text-white font-prompt p-4 text-center">
-                        <span id="text-gal1-title" class="text-sm font-semibold">สุกี้ผัดสดใหม่จากเตา</span>
-                        <button onclick="openSingleImgEditor('img-gallery-1', 'รูปแกลเลอรีที่ 1')" class="mt-2 bg-white/20 hover:bg-white/40 text-xs px-3 py-1 rounded-lg backdrop-blur-sm border border-white/30">
-                            <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนลิงก์รูป
-                        </button>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="บรรยากาศร้านสุกี้วงษ์ศรี" class="w-full h-[400px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-brand-red text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                        <span class="block text-3xl font-bold font-prompt">10+</span>
+                        <span class="text-sm font-prompt">ปีแห่งความอร่อย</span>
                     </div>
                 </div>
 
-                <!-- Gallery Item 2 -->
-                <div class="relative group h-64 rounded-2xl overflow-hidden border border-brand-border shadow-sm">
-                    <img id="img-gallery-2" src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80" onerror="handleImgError(this)" alt="เส้นใหญ่ผัดซีอิ๊วหอมกลิ่นกระทะ" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center text-white font-prompt p-4 text-center">
-                        <span id="text-gal2-title" class="text-sm font-semibold">เส้นใหญ่ผัดซีอิ๊วหอมกลิ่นกระทะ</span>
-                        <button onclick="openSingleImgEditor('img-gallery-2', 'รูปแกลเลอรีที่ 2')" class="mt-2 bg-white/20 hover:bg-white/40 text-xs px-3 py-1 rounded-lg backdrop-blur-sm border border-white/30">
-                            <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนลิงก์รูป
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 3 -->
-                <div class="relative group h-64 rounded-2xl overflow-hidden border border-brand-border shadow-sm">
-                    <img id="img-gallery-3" src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=600&q=80" onerror="handleImgError(this)" alt="หมูสะเต๊ะเนื้อนุ่ม" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center text-white font-prompt p-4 text-center">
-                        <span id="text-gal3-title" class="text-sm font-semibold">หมูสะเต๊ะย่างกะทิหอมๆ</span>
-                        <button onclick="openSingleImgEditor('img-gallery-3', 'รูปแกลเลอรีที่ 3')" class="mt-2 bg-white/20 hover:bg-white/40 text-xs px-3 py-1 rounded-lg backdrop-blur-sm border border-white/30">
-                            <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนลิงก์รูป
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 4 -->
-                <div class="relative group h-64 rounded-2xl overflow-hidden border border-brand-border shadow-sm">
-                    <img id="img-gallery-4" src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=80" onerror="handleImgError(this)" alt="บรรยากาศการบริการทานที่ร้าน" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center text-white font-prompt p-4 text-center">
-                        <span id="text-gal4-title" class="text-sm font-semibold">บรรยากาศอบอุ่นเป็นกันเอง</span>
-                        <button onclick="openSingleImgEditor('img-gallery-4', 'รูปแกลเลอรีที่ 4')" class="mt-2 bg-white/20 hover:bg-white/40 text-xs px-3 py-1 rounded-lg backdrop-blur-sm border border-white/30">
-                            <i class="fa-solid fa-pen mr-1"></i> เปลี่ยนลิงก์รูป
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-16 sm:py-24 bg-white border-t border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="inline-block px-3 py-1 bg-brand-goldlight text-brand-gold text-xs font-prompt font-bold rounded-full mb-3 uppercase tracking-wider">Testimonials</span>
-                <h2 id="text-review-title" class="font-prompt text-3xl sm:text-4xl font-bold text-brand-dark">เสียงสะท้อนจากลูกค้า</h2>
-                <div class="w-16 h-1 bg-brand-gold mx-auto my-3 rounded-full"></div>
-            </div>
-
-            <!-- Review Summary Header -->
-            <div class="bg-brand-warmbg rounded-3xl p-8 border border-brand-border max-w-3xl mx-auto mb-12 text-center font-prompt flex flex-col sm:flex-row items-center justify-around gap-6 shadow-sm">
                 <div>
-                    <span id="text-review-score" class="text-5xl font-extrabold text-brand-dark">4.8</span>
-                    <span class="text-brand-muted text-sm block mt-1">จากคะแนนเต็ม 5.0</span>
-                </div>
-                <div class="text-center sm:text-left">
-                    <div class="text-brand-gold text-2xl mb-1">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <p class="text-brand-dark font-medium text-sm">อ้างอิงจากรีวิวลูกค้ารวมกว่า <strong id="text-review-count" class="text-brand-red">266 รีวิว</strong> บนโซเชียลมีเดีย</p>
-                </div>
-                <button onclick="openReviewModal()" class="bg-brand-red hover:bg-brand-redhover text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow">
-                    <i class="fa-solid fa-pen-to-square mr-1"></i> เขียนรีวิว
-                </button>
-            </div>
-
-            <!-- Review Cards -->
-            <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 font-prompt">
-                <div class="p-6 bg-brand-cream rounded-2xl border border-brand-border shadow-sm space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-bold">
-                                K
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-brand-dark">คุณกิตติศักดิ์</h4>
-                                <span class="text-xs text-brand-muted">ลูกค้าประจำ</span>
-                            </div>
-                        </div>
-                        <span class="text-brand-gold text-xs"><i class="fa-solid fa-star"></i> 5.0</span>
-                    </div>
-                    <p class="text-xs text-brand-muted leading-relaxed">
-                        "น้ำจิ้มสุกี้อร่อยมาก เข้มข้นไม่เหมือนใคร สั่งสุกี้แห้งทะเลผัดหอมกลิ่นกระทะสุดๆ หมูสะเต๊ะก็นุ่ม อร่อยคุ้มราคามากครับ"
+                    <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">About Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-6">เรื่องราวของ "สุกี้วงษ์ศรี"</h2>
+                    <p class="text-brand-dark/80 font-sarabun leading-relaxed mb-4">
+                        สุกี้วงษ์ศรี จุดเริ่มต้นจากความชื่นชอบการทำสุกี้ทานในครอบครัว นำมาสู่การพัฒนาน้ำจิ้มสุกี้สูตรเฉพาะเข้มข้น หอมเต้าหู้ยี้คั่วพริกกระเทียมสด ปรุงอย่างพิถีพิถัน
                     </p>
-                </div>
-
-                <div class="p-6 bg-brand-cream rounded-2xl border border-brand-border shadow-sm space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold">
-                                N
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-brand-dark">คุณนภาวรรณ</h4>
-                                <span class="text-xs text-brand-muted">สั่งผ่านเดลิเวอรี</span>
-                            </div>
-                        </div>
-                        <span class="text-brand-gold text-xs"><i class="fa-solid fa-star"></i> 5.0</span>
-                    </div>
-                    <p class="text-xs text-brand-muted leading-relaxed">
-                        "สั่งผ่านระบบออนไลน์สะดวกมาก อาหารมาถึงยังร้อนๆ สุกี้น้ำซุปกลมกล่อม วัตถุดิบสดสะอาด ให้เยอะคุ้มค่าค่ะ"
+                    <p class="text-brand-dark/80 font-sarabun leading-relaxed mb-6">
+                        เราให้ความสำคัญกับความสด สะอาด และคุณภาพของวัตถุดิบเป็นอันดับหนึ่ง หมูหมักนุ่มละมุนลิ้น ผักสดสะอาดปลอดสาร เพื่อให้ทุกจานที่เสิร์ฟถึงโต๊ะคุณ เต็มไปด้วยรสชาติและคุณภาพที่ยอดเยี่ยมที่สุด
                     </p>
-                </div>
-
-                <div class="p-6 bg-brand-cream rounded-2xl border border-brand-border shadow-sm space-y-3">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-6 pt-2">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">
-                                P
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-brand-dark">คุณภานุเดช</h4>
-                                <span class="text-xs text-brand-muted">ทานที่ร้าน</span>
-                            </div>
+                            <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+                            <span class="font-prompt font-medium">ผักสดสะอาดทุกวัน</span>
                         </div>
-                        <span class="text-brand-gold text-xs"><i class="fa-solid fa-star"></i> 4.5</span>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+                            <span class="font-prompt font-medium">ไม่ใส่สารกันบูด</span>
+                        </div>
                     </div>
-                    <p class="text-xs text-brand-muted leading-relaxed">
-                        "ราดหน้าเส้นใหญ่เตาถ่านอร่อยมากครับ เส้นหอม ผักกรอบ หมูหมักนุ่มละมุนลิ้น บริการดีและเป็นกันเองมาก"
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer id="contact" class="bg-brand-red text-white font-prompt pt-16 pb-8 border-t-4 border-brand-gold">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/15">
-                
-                <!-- Brand Summary -->
-                <div class="md:col-span-5 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-brand-red font-bold text-xl">
-                            <i class="fa-solid fa-fire-burner"></i>
-                        </div>
-                        <span id="text-footer-brand" class="font-bold text-2xl tracking-tight">สุกี้วงษ์ศรี</span>
-                    </div>
-                    <p id="text-footer-desc" class="text-xs text-red-100 max-w-sm leading-relaxed">
-                        อร่อยเต็มจาน อิ่มเต็มใจ ในราคาที่เข้าถึงง่าย อาหารจานเดียวคุณภาพสดใหม่ สืบทอดรสชาติสูตรดั้งเดิมยาวนาน
-                    </p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white hover:text-brand-red flex items-center justify-center transition text-sm">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white hover:text-brand-red flex items-center justify-center transition text-sm">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white hover:text-brand-red flex items-center justify-center transition text-sm">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white hover:text-brand-red flex items-center justify-center transition text-sm">
-                            <i class="fa-brands fa-line"></i>
-                        </a>
-                    </div>
-                </div>
+    <!-- Location & Contact Section -->
+    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Contact & Location</span>
+            <h2 class="text-3xl font-bold font-prompt text-brand-dark mt-1 mb-3">ที่ตั้งและการเดินทาง</h2>
+            <p class="text-brand-muted">แวะมาอิ่มอร่อยกับพวกเราได้ทุกวัน หรือโทรสั่งซื้อล่วงหน้าได้เลย</p>
+        </div>
 
-                <!-- Quick Navigation Links -->
-                <div class="md:col-span-3 space-y-3 text-xs">
-                    <h4 class="font-bold text-sm text-brand-goldlight">เมนูนำทาง (Sitemap)</h4>
-                    <ul class="space-y-2 text-red-100">
-                        <li><a href="#home" class="hover:underline">หน้าแรก (Home)</a></li>
-                        <li><a href="#menu" class="hover:underline">รายการเมนูแนะนำ (Menu)</a></li>
-                        <li><a href="#about" class="hover:underline">เรื่องราวของเรา (About)</a></li>
-                        <li><a href="#gallery" class="hover:underline">รูปภาพบรรยากาศ (Gallery)</a></li>
-                        <li><a href="#reviews" class="hover:underline">รีวิวจากลูกค้า (Reviews)</a></li>
-                    </ul>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-lightred text-brand-red rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-location-dot"></i>
                 </div>
-
-                <!-- Contact & Ordering Info -->
-                <div class="md:col-span-4 space-y-3 text-xs">
-                    <h4 class="font-bold text-sm text-brand-goldlight">ติดต่อและสำรองโต๊ะ</h4>
-                    <p class="text-red-100"><i class="fa-solid fa-location-dot mr-2"></i> <span id="text-footer-address">คลองสอง รังสิต-นครนายก 51 หน้า รพ.บางปะกอกรังสิต 2</span></p>
-                    <p class="text-red-100"><i class="fa-solid fa-phone mr-2"></i> <span id="text-footer-phone">092-874-9987</span></p>
-                    <p class="text-red-100"><i class="fa-solid fa-clock mr-2"></i> <span id="text-footer-hours">ทุกวัน 10:30 - 22:00 น.</span></p>
-                </div>
-
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">ที่ตั้งร้าน</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    123 ถนนสุขุมวิท แขวงคลองเตย <br>เขตคลองเตย กรุงเทพมหานคร 10110
+                </p>
             </div>
 
-            <!-- Copyright -->
-            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-red-200">
-                <p>&copy; 2026 ร้านสุกี้วงษ์ศรี (Suki Wongsi). All Rights Reserved.</p>
-                <p class="mt-2 sm:mt-0">Conceptual Web Storyboard</p>
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-goldlight text-brand-gold rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">เวลาเปิด - ปิด</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    เปิดบริการทุกวัน <br>
+                    <span class="font-semibold text-brand-dark">10:30 น. - 21:00 น.</span>
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-lightred text-brand-red rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">ติดต่อสั่งอาหาร</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    โทร: <a href="tel:0812345678" class="text-brand-red font-semibold hover:underline">081-234-5678</a><br>
+                    Line ID: <span class="text-brand-dark font-semibold">@sukiwongsri</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white border-t border-white/10 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white text-lg font-bold font-prompt">
+                        ส
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold font-prompt text-white block leading-tight">สุกี้วงษ์ศรี</span>
+                        <span class="text-xs text-gray-400">อร่อยเต็มจาน อิ่มเต็มใจ</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="Line">
+                        <i class="fa-brands fa-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center text-xs text-gray-400 font-sarabun">
+                &copy; 2026 สุกี้วงษ์ศรี (Suki Wongsri). All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Floating Action Button (Fixed Bottom-Left) -->
-    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-2">
-        <button onclick="openImageManagerModal()" class="bg-slate-700 hover:bg-slate-800 text-white font-prompt p-3 rounded-full shadow-2xl flex items-center gap-2 text-xs font-bold border-2 border-white transition transform hover:scale-105 active:scale-95">
-            <i class="fa-solid fa-camera text-base"></i>
-            <span class="hidden md:inline">จัดการรูปภาพภายนอก</span>
-        </button>
-    </div>
-
-    <!-- Modal: Edit Existing Menu Item Modal -->
-    <div id="editMenuModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl border border-brand-border space-y-4 font-prompt">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h3 class="font-bold text-lg text-brand-dark flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square text-brand-red"></i> แก้ไขข้อมูลเมนูอาหาร
-                </h3>
-                <button onclick="closeEditMenuModal()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <form onsubmit="handleEditMenuSubmit(event)" class="space-y-3 text-xs">
-                <input type="hidden" id="editMenuId">
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">ชื่อรายการอาหาร</label>
-                    <input type="text" id="editMenuName" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">ราคา (บาท)</label>
-                        <input type="number" id="editMenuPrice" required min="1" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">หมวดหมู่</label>
-                        <select id="editMenuCategory" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                            <option value="suki">เมนูสุกี้</option>
-                            <option value="noodles">ผัดซีอิ๊ว / ราดหน้า</option>
-                            <option value="appetizer">ทานเล่น / ข้าว</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">ป้ายกำกับ (เช่น ยอดนิยม 🌟)</label>
-                        <input type="text" id="editMenuTag" placeholder="ยอดนิยม" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">ข้อความย่อเสริม</label>
-                        <input type="text" id="editMenuExtra" placeholder="หอมกลิ่นกระทะ" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">คำอธิบายเมนู</label>
-                    <textarea id="editMenuDesc" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red"></textarea>
-                </div>
-
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">ลิงก์รูปภาพภายนอก (External Image URL)</label>
-                    <input type="url" id="editMenuImg" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-
-                <div class="flex items-center gap-2 pt-2">
-                    <button type="submit" class="flex-1 bg-brand-red hover:bg-brand-redhover text-white py-2.5 rounded-xl font-semibold shadow-md transition text-xs">
-                        บันทึกการแก้ไข
-                    </button>
-                    <button type="button" onclick="deleteMenuItem()" class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-2.5 rounded-xl font-semibold transition text-xs">
-                        <i class="fa-solid fa-trash-can"></i> ลบเมนู
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal: Add New Custom Menu Item -->
-    <div id="addMenuModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl border border-brand-border space-y-4 font-prompt">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h3 class="font-bold text-lg text-brand-dark flex items-center gap-2">
-                    <i class="fa-solid fa-plus-circle text-emerald-600"></i> เพิ่มรายการอาหารใหม่
-                </h3>
-                <button onclick="closeAddNewMenuModal()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <form onsubmit="handleAddNewMenuSubmit(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">ชื่อรายการอาหาร</label>
-                    <input type="text" id="newMenuName" required placeholder="เช่น สุกี้เนื้อโพนยางคำ" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">ราคา (บาท)</label>
-                        <input type="number" id="newMenuPrice" required min="1" placeholder="95" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-brand-dark mb-1">หมวดหมู่</label>
-                        <select id="newMenuCategory" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                            <option value="suki">เมนูสุกี้</option>
-                            <option value="noodles">ผัดซีอิ๊ว / ราดหน้า</option>
-                            <option value="appetizer">ทานเล่น / ข้าว</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">ลิงก์รูปภาพจากภายนอก (External Image URL)</label>
-                    <input type="url" id="newMenuImgUrl" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-
-                <div>
-                    <label class="block font-semibold text-brand-dark mb-1">คำอธิบายเมนูย่อ</label>
-                    <input type="text" id="newMenuDesc" placeholder="เนื้อนุ่มละมุน ผัดซอสสุกี้สูตรเด็ด" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold shadow-md transition text-xs">
-                    เพิ่มเมนูเข้าหน้าร้าน
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal: External Image Link Manager Modal -->
-    <div id="imageManagerModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-2xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-brand-border space-y-6 font-prompt max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between border-b border-brand-border pb-4">
-                <div>
-                    <h3 class="font-bold text-xl text-brand-dark flex items-center gap-2">
-                        <i class="fa-solid fa-link text-brand-red"></i> จัดการลิงก์รูปภาพภายนอก (External Image Links)
-                    </h3>
-                    <p class="text-xs text-brand-muted mt-1">วางลิงก์รูปภาพจากภายนอก (เช่น Imgur, Unsplash, Pic.in.th) เพื่อเปลี่ยนรูปบนหน้าเว็บทันที</p>
-                </div>
-                <button onclick="closeImageManagerModal()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <form onsubmit="saveGlobalImageLinks(event)" class="space-y-4 text-sm">
-                <!-- Section: Hero Images -->
-                <div class="space-y-3 pt-2">
-                    <h4 class="font-bold text-sm text-brand-red flex items-center gap-1.5">
-                        <i class="fa-solid fa-image"></i> รูปส่วนต้อนรับ (Hero Section)
-                    </h4>
-                    <div>
-                        <label class="block text-xs font-semibold text-brand-dark mb-1">1. ลิงก์รูปพื้นหลังใหญ่หน้าแรก</label>
-                        <input type="url" id="input-hero-bg" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-brand-dark mb-1">2. ลิงก์รูปการ์ดแนะนำหม้อไฟ</label>
-                        <input type="url" id="input-hero-card" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                    </div>
-                </div>
-
-                <!-- Section: Gallery Images -->
-                <div class="space-y-3 pt-2 border-t border-brand-border">
-                    <h4 class="font-bold text-sm text-brand-red flex items-center gap-1.5">
-                        <i class="fa-solid fa-images"></i> รูปแกลเลอรี (Gallery Images)
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-semibold text-brand-dark mb-1">รูปแกลเลอรี 1</label>
-                            <input type="url" id="input-gallery-1" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-brand-dark mb-1">รูปแกลเลอรี 2</label>
-                            <input type="url" id="input-gallery-2" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-brand-dark mb-1">รูปแกลเลอรี 3</label>
-                            <input type="url" id="input-gallery-3" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-brand-dark mb-1">รูปแกลเลอรี 4</label>
-                            <input type="url" id="input-gallery-4" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-brand-border text-xs">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
-                    <button type="submit" class="flex-1 bg-brand-red hover:bg-brand-redhover text-white py-2.5 rounded-xl font-semibold shadow-md transition text-xs">
-                        <i class="fa-solid fa-check mr-1"></i> บันทึกรูปภาพ
-                    </button>
-                    <button type="button" onclick="resetDefaultImages()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2.5 rounded-xl text-xs font-semibold transition">
-                        ล้างเป็นรูปเริ่มต้น
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal: Edit Single Image Link Modal -->
-    <div id="singleImgModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl border border-brand-border space-y-4 font-prompt">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h3 id="singleImgTitle" class="font-bold text-lg text-brand-dark">เปลี่ยนรูปภาพ</h3>
-                <button onclick="closeSingleImgEditor()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <div class="space-y-3 text-sm">
-                <div>
-                    <label class="block text-xs font-semibold text-brand-dark mb-1">วาง URL รูปภาพภายนอกใหม่</label>
-                    <input type="url" id="singleImgUrlInput" placeholder="https://example.com/image.jpg" class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red text-xs">
-                </div>
-
-                <!-- Preview Area -->
-                <div class="bg-brand-warmbg p-2 rounded-xl border border-brand-border text-center">
-                    <span class="text-xs text-brand-muted block mb-1">ตัวอย่างการแสดงผลรูป:</span>
-                    <img id="singleImgPreview" src="" onerror="handleImgError(this)" class="w-full h-36 object-cover rounded-lg">
-                </div>
-
-                <button onclick="applySingleImgChange()" class="w-full bg-brand-red hover:bg-brand-redhover text-white py-2.5 rounded-xl font-semibold shadow-md transition text-xs">
-                    ยืนยันการเปลี่ยนรูป
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-brand-border space-y-5 font-prompt">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h3 class="font-bold text-xl text-brand-dark flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-check text-brand-red"></i> จองโต๊ะล่วงหน้า
-                </h3>
-                <button onclick="closeBookingModal()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <form onsubmit="handleBookingSubmit(event)" class="space-y-4 text-sm">
-                <div>
-                    <label class="block font-medium text-brand-dark mb-1">ชื่อ - นามสกุล ผู้จอง</label>
-                    <input type="text" required placeholder="กรุณากรอกชื่อของคุณ" class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-medium text-brand-dark mb-1">เบอร์โทรศัพท์</label>
-                        <input type="tel" required placeholder="08X-XXX-XXXX" class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                    <div>
-                        <label class="block font-medium text-brand-dark mb-1">จำนวนลูกค้า (ท่าน)</label>
-                        <select required class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                            <option value="1-2">1 - 2 ท่าน</option>
-                            <option value="3-4">3 - 4 ท่าน</option>
-                            <option value="5-8">5 - 8 ท่าน</option>
-                            <option value="9+">9 ท่านขึ้นไป (กรุ๊ปใหญ่)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-medium text-brand-dark mb-1">วันที่ต้องการจอง</label>
-                        <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                    </div>
-                    <div>
-                        <label class="block font-medium text-brand-dark mb-1">รอบเวลา</label>
-                        <select required class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                            <option value="11:00">11:00 น.</option>
-                            <option value="12:30">12:30 น.</option>
-                            <option value="17:00">17:00 น.</option>
-                            <option value="18:30">18:30 น.</option>
-                            <option value="20:00">20:00 น.</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium text-brand-dark mb-1">หมายเหตุเพิ่มเติม (ถ้ามี)</label>
-                    <textarea rows="2" placeholder="เช่น ขอโต๊ะใกล้พัดลม, แพ้อาหาร..." class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-brand-red hover:bg-brand-redhover text-white py-3 rounded-xl font-semibold shadow-md transition">
-                    ยืนยันการจองโต๊ะ
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Review Modal -->
-    <div id="reviewModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl border border-brand-border space-y-4 font-prompt">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h3 class="font-bold text-lg text-brand-dark">เขียนรีวิวความประทับใจ</h3>
-                <button onclick="closeReviewModal()" class="text-brand-muted hover:text-brand-dark p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <form onsubmit="handleReviewSubmit(event)" class="space-y-4 text-sm">
-                <div>
-                    <label class="block font-medium text-brand-dark mb-1">ชื่อของคุณ</label>
-                    <input id="revName" type="text" required placeholder="เช่น คุณสมชาย" class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                </div>
-                <div>
-                    <label class="block font-medium text-brand-dark mb-1">คะแนนความพึงพอใจ</label>
-                    <select id="revRating" class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red">
-                        <option value="5.0">⭐⭐⭐⭐⭐ 5.0 (ประทับใจมาก)</option>
-                        <option value="4.5">⭐⭐⭐⭐ 4.5 (ดีมาก)</option>
-                        <option value="4.0">⭐⭐⭐⭐ 4.0 (ดี)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-medium text-brand-dark mb-1">ความคิดเห็นเกี่ยวกับอาหารและบริการ</label>
-                    <textarea id="revComment" rows="3" required placeholder="บอกเล่าความอร่อย..." class="w-full px-4 py-2.5 rounded-xl border border-brand-border focus:outline-none focus:border-brand-red"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-brand-red hover:bg-brand-redhover text-white py-3 rounded-xl font-semibold shadow-md transition">
-                    ส่งความคิดเห็น
-                </button>
-            </form>
-        </div>
-    </div>
-
+    <!-- JavaScript Scripts -->
     <script>
-        // Fallback placeholder image when dynamic external image link fails
-        const FALLBACK_IMAGE_URL = "https://placehold.co/600x400/991b1b/ffffff?text=Suki+Wongsi";
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        // Initial Default Menu State
-        const DEFAULT_MENU_ITEMS = [
-            {
-                id: 'm1',
-                name: 'สุกี้แห้งทะเลโบราณ',
-                price: 85,
-                category: 'suki',
-                tag: 'ยอดนิยม 🌟',
-                badgeColor: 'bg-brand-red',
-                desc: 'กุ้งสด หมึกกรอบ หอมกลิ่นกระทะ ผัดซอสสุกี้สูตรลับเฉพาะเข้มข้น',
-                extra: 'ความเผ็ด: เลือกระดับได้',
-                img: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80'
-            },
-            {
-                id: 'm2',
-                name: 'สุกี้น้ำหมูนุ่มทรงเครื่อง',
-                price: 70,
-                category: 'suki',
-                tag: 'ขายดี ♨️',
-                badgeColor: 'bg-brand-red',
-                desc: 'หมักหมูนุ่มสูตรพิเศษ น้ำซุปหวานหอมกลมกล่อม พร้อมผักสดกรอบ',
-                extra: 'แนะนำสูตรเด็ด',
-                img: 'https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=600&q=80'
-            },
-            {
-                id: 'm3',
-                name: 'ราดหน้าหมูหมักเส้นใหญ่เตาถ่าน',
-                price: 75,
-                category: 'noodles',
-                tag: 'สูตรเด็ด 👍',
-                badgeColor: 'bg-brand-gold',
-                desc: 'เส้นใหญ่ผัดหอมกลิ่นกระทะ น้ำราดหน้ารสเข้มข้น ยอดคะน้ากรอบ',
-                extra: 'หอมกลิ่นกระทะ',
-                img: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80'
-            },
-            {
-                id: 'm4',
-                name: 'ผัดซีอิ๊วทะเลรวมมิตร',
-                price: 80,
-                category: 'noodles',
-                tag: 'ยอดฮิต',
-                badgeColor: 'bg-brand-gold',
-                desc: 'เส้นใหญ่เหนียวนุ่ม ผัดกับซีอิ๊วอย่างดี ใส่กุ้งและปลาหมึกสด',
-                extra: 'ขายดี',
-                img: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80'
-            },
-            {
-                id: 'm5',
-                name: 'ข้าวผัดปูสูตรคุณยวด',
-                price: 90,
-                category: 'appetizer',
-                tag: 'เชฟแนะนำ ✨',
-                badgeColor: 'bg-amber-600',
-                desc: 'ข้าวเรียงเม็ดสวย ผัดไข่หอมละมุน เสิร์ฟพร้อมเนื้อปูเน้นๆ',
-                extra: 'เมนูเชฟแนะนำ',
-                img: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80'
-            },
-            {
-                id: 'm6',
-                name: 'หมูสะเต๊ะชุดใหญ่ (10 ไม้)',
-                price: 110,
-                category: 'appetizer',
-                tag: 'ทานเล่น 🍢',
-                badgeColor: 'bg-amber-600',
-                desc: 'หมูนุ่ม หอมกะทิและเครื่องเทศ ย่างเตาถ่านพร้อมน้ำจิ้มถั่วรสเด็ด',
-                extra: 'ของทานเล่นยอดฮิต',
-                img: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=600&q=80'
-            }
-        ];
-
-        // Global State variables
-        let menuItemsData = [];
-        let currentEditingImgTargetId = null;
-        let currentActiveCategory = 'all';
-
-        // Initialize App on Page Load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadSavedMenuItems();
-            loadSavedImageLinks();
-            renderMenuItems('all');
+        // Hide loading screen when page initially loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loadingOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+                loadingOverlay.classList.add('opacity-0', 'pointer-events-none');
+            }, 300);
         });
 
-        // Error handling for external image broken links
-        function handleImgError(imgElement) {
-            imgElement.onerror = null;
-            imgElement.src = FALLBACK_IMAGE_URL;
-        }
+        // Mobile Navigation Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-        /* -------------------------------------------------------------
-         * MENU DATA PERSISTENCE & RENDER
-         * ------------------------------------------------------------- */
-        function loadSavedMenuItems() {
-            const raw = localStorage.getItem('suki_wongsi_menu_items');
-            if (raw) {
-                try {
-                    menuItemsData = JSON.parse(raw);
-                } catch(e) {
-                    menuItemsData = [...DEFAULT_MENU_ITEMS];
-                }
-            } else {
-                menuItemsData = [...DEFAULT_MENU_ITEMS];
-            }
-        }
-
-        function saveMenuItemsToStorage() {
-            localStorage.setItem('suki_wongsi_menu_items', JSON.stringify(menuItemsData));
-        }
-
-        function renderMenuItems(category = 'all') {
-            currentActiveCategory = category;
-            const container = document.getElementById('menuContainer');
-            if (!container) return;
-
-            const filtered = category === 'all' 
-                ? menuItemsData 
-                : menuItemsData.filter(item => item.category === category);
-
-            if (filtered.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-brand-border">
-                        <i class="fa-solid fa-utensils text-4xl text-brand-muted mb-2"></i>
-                        <p class="text-brand-muted font-prompt text-sm">ไม่พบรายการอาหารในหมวดหมู่นี้</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = filtered.map(item => `
-                <div class="menu-item bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative">
-                    <div class="relative h-52 overflow-hidden bg-brand-warmbg">
-                        <img id="img-menu-${item.id}" src="${item.img}" onerror="handleImgError(this)" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        ${item.tag ? `<span class="absolute top-3 left-3 ${item.badgeColor || 'bg-brand-red'} text-white text-xs font-prompt font-semibold px-2.5 py-1 rounded-lg shadow-md">${item.tag}</span>` : ''}
+        // Intercept navigation link clicks to trigger loading screen
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
                         
-                        <div class="absolute top-3 right-3 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
-                            <button onclick="openEditMenuModal('${item.id}')" title="แก้ไขข้อมูลเมนูนี้" 
-                                    class="bg-brand-red hover:bg-brand-redhover text-white text-xs px-2.5 py-1.5 rounded-lg shadow-md backdrop-blur-sm transition font-prompt flex items-center gap-1">
-                                <i class="fa-solid fa-pen-to-square"></i> แก้ไขเมนู
-                            </button>
-                        </div>
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
 
-                        <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-brand-dark font-prompt font-bold text-lg px-3 py-1 rounded-xl shadow-sm">
-                            ฿${item.price}.-
-                        </span>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between font-prompt space-y-3">
-                        <div>
-                            <h3 class="font-bold text-lg text-brand-dark group-hover:text-brand-red transition">${item.name}</h3>
-                            <p class="text-xs text-brand-muted mt-1 leading-relaxed">${item.desc || ''}</p>
-                        </div>
-                        <div class="pt-2 flex items-center justify-between border-t border-brand-border text-xs text-brand-muted">
-                            <span class="flex items-center gap-1 text-amber-600 font-medium">
-                                <i class="fa-solid fa-sparkles"></i> ${item.extra || 'แนะนำ'}
-                            </span>
-                            <span class="text-brand-red font-semibold">สูตรเด็ดประจำร้าน</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+                        // Show Loading Screen
+                        loadingOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                        loadingOverlay.classList.add('opacity-100', 'pointer-events-auto');
 
-        function filterMenu(category, evt) {
+                        // Wait for transition, then scroll and hide Loading Screen
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+                            setTimeout(() => {
+                                loadingOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+                                loadingOverlay.classList.add('opacity-0', 'pointer-events-none');
+                            }, 400);
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Category Filter Function
+        function filterMenu(category, btnElement) {
             const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            if(evt && evt.currentTarget) {
-                evt.currentTarget.classList.add('active');
-            }
-            renderMenuItems(category);
-        }
-
-        /* -------------------------------------------------------------
-         * EDIT EXISTING MENU ITEM MODAL
-         * ------------------------------------------------------------- */
-        function openEditMenuModal(menuId) {
-            const item = menuItemsData.find(m => m.id === menuId);
-            if (!item) return;
-
-            document.getElementById('editMenuId').value = item.id;
-            document.getElementById('editMenuName').value = item.name;
-            document.getElementById('editMenuPrice').value = item.price;
-            document.getElementById('editMenuCategory').value = item.category || 'suki';
-            document.getElementById('editMenuTag').value = item.tag || '';
-            document.getElementById('editMenuExtra').value = item.extra || '';
-            document.getElementById('editMenuDesc').value = item.desc || '';
-            document.getElementById('editMenuImg').value = item.img || '';
-
-            document.getElementById('editMenuModal').classList.remove('hidden');
-        }
-
-        function closeEditMenuModal() {
-            document.getElementById('editMenuModal').classList.add('hidden');
-        }
-
-        function handleEditMenuSubmit(e) {
-            e.preventDefault();
-            const id = document.getElementById('editMenuId').value;
-            const item = menuItemsData.find(m => m.id === id);
-
-            if (item) {
-                item.name = document.getElementById('editMenuName').value;
-                item.price = parseFloat(document.getElementById('editMenuPrice').value);
-                item.category = document.getElementById('editMenuCategory').value;
-                item.tag = document.getElementById('editMenuTag').value;
-                item.extra = document.getElementById('editMenuExtra').value;
-                item.desc = document.getElementById('editMenuDesc').value;
-                item.img = document.getElementById('editMenuImg').value;
-
-                saveMenuItemsToStorage();
-                renderMenuItems(currentActiveCategory);
-                closeEditMenuModal();
-                showToast(`แก้ไขเมนู "${item.name}" เรียบร้อยแล้ว!`);
-            }
-        }
-
-        function deleteMenuItem() {
-            const id = document.getElementById('editMenuId').value;
-            const item = menuItemsData.find(m => m.id === id);
-            if (!item) return;
-
-            if (confirm(`คุณต้องการลบเมนู "${item.name}" ออกจากระบบใช่หรือไม่?`)) {
-                menuItemsData = menuItemsData.filter(m => m.id !== id);
-                saveMenuItemsToStorage();
-                renderMenuItems(currentActiveCategory);
-                closeEditMenuModal();
-                showToast(`ลบรายการอาหารเรียบร้อยแล้ว`);
-            }
-        }
-
-        /* -------------------------------------------------------------
-         * ADD NEW MENU ITEM
-         * ------------------------------------------------------------- */
-        function openAddNewMenuModal() {
-            document.getElementById('addMenuModal').classList.remove('hidden');
-        }
-
-        function closeAddNewMenuModal() {
-            document.getElementById('addMenuModal').classList.add('hidden');
-        }
-
-        function handleAddNewMenuSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('newMenuName').value;
-            const price = parseFloat(document.getElementById('newMenuPrice').value);
-            const category = document.getElementById('newMenuCategory').value;
-            const img = document.getElementById('newMenuImgUrl').value;
-            const desc = document.getElementById('newMenuDesc').value || 'เมนูทำสดใหม่ รสชาติเข้มข้น';
-
-            const newId = 'custom_' + Date.now();
-            menuItemsData.unshift({
-                id: newId,
-                name,
-                price,
-                category,
-                desc,
-                tag: 'ใหม่ ✨',
-                badgeColor: 'bg-emerald-600',
-                extra: 'ทำสดใหม่',
-                img
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-brand-red', 'text-white');
+                btn.classList.add('bg-white', 'text-brand-dark');
             });
 
-            saveMenuItemsToStorage();
-            renderMenuItems('all');
-            closeAddNewMenuModal();
-            showToast(`เพิ่มเมนู "${name}" เรียบร้อยแล้ว!`);
-            
-            // Clear form
-            document.getElementById('newMenuName').value = '';
-            document.getElementById('newMenuPrice').value = '';
-            document.getElementById('newMenuImgUrl').value = '';
-            document.getElementById('newMenuDesc').value = '';
-        }
+            btnElement.classList.add('active', 'bg-brand-red', 'text-white');
+            btnElement.classList.remove('bg-white', 'text-brand-dark');
 
-        /* -------------------------------------------------------------
-         * IMAGE LINK MANAGEMENT FUNCTIONS
-         * ------------------------------------------------------------- */
-        function openImageManagerModal() {
-            const heroBg = document.getElementById('img-hero-bg');
-            const heroCard = document.getElementById('img-hero-card');
-            const g1 = document.getElementById('img-gallery-1');
-            const g2 = document.getElementById('img-gallery-2');
-            const g3 = document.getElementById('img-gallery-3');
-            const g4 = document.getElementById('img-gallery-4');
-
-            if(heroBg) document.getElementById('input-hero-bg').value = heroBg.src;
-            if(heroCard) document.getElementById('input-hero-card').value = heroCard.src;
-            if(g1) document.getElementById('input-gallery-1').value = g1.src;
-            if(g2) document.getElementById('input-gallery-2').value = g2.src;
-            if(g3) document.getElementById('input-gallery-3').value = g3.src;
-            if(g4) document.getElementById('input-gallery-4').value = g4.src;
-
-            document.getElementById('imageManagerModal').classList.remove('hidden');
-        }
-
-        function closeImageManagerModal() {
-            document.getElementById('imageManagerModal').classList.add('hidden');
-        }
-
-        function saveGlobalImageLinks(e) {
-            e.preventDefault();
-            const bgUrl = document.getElementById('input-hero-bg').value;
-            const cardUrl = document.getElementById('input-hero-card').value;
-            const g1Url = document.getElementById('input-gallery-1').value;
-            const g2Url = document.getElementById('input-gallery-2').value;
-            const g3Url = document.getElementById('input-gallery-3').value;
-            const g4Url = document.getElementById('input-gallery-4').value;
-
-            if (bgUrl) document.getElementById('img-hero-bg').src = bgUrl;
-            if (cardUrl) document.getElementById('img-hero-card').src = cardUrl;
-            if (g1Url) document.getElementById('img-gallery-1').src = g1Url;
-            if (g2Url) document.getElementById('img-gallery-2').src = g2Url;
-            if (g3Url) document.getElementById('img-gallery-3').src = g3Url;
-            if (g4Url) document.getElementById('img-gallery-4').src = g4Url;
-
-            const savedData = { bgUrl, cardUrl, g1Url, g2Url, g3Url, g4Url };
-            localStorage.setItem('suki_wongsi_custom_images', JSON.stringify(savedData));
-
-            closeImageManagerModal();
-            showToast('อัปเดตลิงก์รูปภาพเรียบร้อย!');
-        }
-
-        function loadSavedImageLinks() {
-            const raw = localStorage.getItem('suki_wongsi_custom_images');
-            if (raw) {
-                try {
-                    const data = JSON.parse(raw);
-                    if (data.bgUrl && document.getElementById('img-hero-bg')) document.getElementById('img-hero-bg').src = data.bgUrl;
-                    if (data.cardUrl && document.getElementById('img-hero-card')) document.getElementById('img-hero-card').src = data.cardUrl;
-                    if (data.g1Url && document.getElementById('img-gallery-1')) document.getElementById('img-gallery-1').src = data.g1Url;
-                    if (data.g2Url && document.getElementById('img-gallery-2')) document.getElementById('img-gallery-2').src = data.g2Url;
-                    if (data.g3Url && document.getElementById('img-gallery-3')) document.getElementById('img-gallery-3').src = data.g3Url;
-                    if (data.g4Url && document.getElementById('img-gallery-4')) document.getElementById('img-gallery-4').src = data.g4Url;
-                } catch(err) {
-                    console.error("Error loading images", err);
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
                 }
-            }
-        }
-
-        function resetDefaultImages() {
-            localStorage.removeItem('suki_wongsi_custom_images');
-            location.reload();
-        }
-
-        // Single Image Editor
-        function openSingleImgEditor(elementId, titleText) {
-            currentEditingImgTargetId = elementId;
-            const targetImg = document.getElementById(elementId);
-            const inputField = document.getElementById('singleImgUrlInput');
-            const previewImg = document.getElementById('singleImgPreview');
-            const titleEl = document.getElementById('singleImgTitle');
-
-            titleEl.innerText = titleText || 'เปลี่ยนลิงก์รูปภาพภายนอก';
-            if (targetImg) {
-                inputField.value = targetImg.src;
-                previewImg.src = targetImg.src;
-            }
-
-            inputField.oninput = () => {
-                previewImg.src = inputField.value || FALLBACK_IMAGE_URL;
-            };
-
-            document.getElementById('singleImgModal').classList.remove('hidden');
-        }
-
-        function closeSingleImgEditor() {
-            document.getElementById('singleImgModal').classList.add('hidden');
-            currentEditingImgTargetId = null;
-        }
-
-        function applySingleImgChange() {
-            const newUrl = document.getElementById('singleImgUrlInput').value;
-            if (!newUrl) {
-                showToast('กรุณาระบุ URL รูปภาพภายนอก');
-                return;
-            }
-
-            if (currentEditingImgTargetId) {
-                const targetImg = document.getElementById(currentEditingImgTargetId);
-                if (targetImg) targetImg.src = newUrl;
-            }
-
-            closeSingleImgEditor();
-            showToast('ปรับเปลี่ยนรูปภาพเรียบร้อยแล้ว');
-        }
-
-        /* -------------------------------------------------------------
-         * BOOKING & REVIEWS MODALS
-         * ------------------------------------------------------------- */
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function openBookingModal() {
-            document.getElementById('bookingModal').classList.remove('hidden');
-        }
-
-        function closeBookingModal() {
-            document.getElementById('bookingModal').classList.add('hidden');
-        }
-
-        function handleBookingSubmit(e) {
-            e.preventDefault();
-            closeBookingModal();
-            showToast('บันทึกข้อมูลการจองโต๊ะเรียบร้อยแล้ว!');
-        }
-
-        function openReviewModal() {
-            document.getElementById('reviewModal').classList.remove('hidden');
-        }
-
-        function closeReviewModal() {
-            document.getElementById('reviewModal').classList.add('hidden');
-        }
-
-        function handleReviewSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('revName').value;
-            const rating = document.getElementById('revRating').value;
-            const comment = document.getElementById('revComment').value;
-
-            const grid = document.getElementById('reviewsGrid');
-            const newReview = document.createElement('div');
-            newReview.className = 'p-6 bg-brand-cream rounded-2xl border border-brand-border shadow-sm space-y-3 font-prompt';
-            newReview.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-bold">
-                            ${name.charAt(0)}
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-brand-dark">${name}</h4>
-                            <span class="text-xs text-brand-muted">รีวิวใหม่ล่าสุด</span>
-                        </div>
-                    </div>
-                    <span class="text-brand-gold text-xs"><i class="fa-solid fa-star"></i> ${rating}</span>
-                </div>
-                <p class="text-xs text-brand-muted leading-relaxed">"${comment}"</p>
-            `;
-
-            grid.prepend(newReview);
-            closeReviewModal();
-            showToast('ขอบคุณสำหรับรีวิวของคุณ!');
-        }
-
-        // Custom Toast Notification System
-        function showToast(msg) {
-            const oldToasts = document.querySelectorAll('.custom-toast');
-            oldToasts.forEach(t => t.remove());
-
-            const toast = document.createElement('div');
-            toast.className = 'custom-toast fixed bottom-5 right-5 z-50 bg-brand-dark text-white font-prompt text-xs px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 border border-brand-gold/40 transition-all duration-300 transform translate-y-0 opacity-100';
-            toast.innerHTML = `<i class="fa-solid fa-circle-check text-green-400 text-sm"></i> <span>${msg}</span>`;
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            });
         }
     </script>
 </body>
