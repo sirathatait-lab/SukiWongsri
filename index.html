@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="สุกี้วงษ์ศรี อร่อยเต็มจาน อิ่มเต็มใจ เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ พร้อมน้ำจิ้มสุกี้สูตรเด็ดเข้มข้น โทรสั่งอาหาร 0942519483">
     <title>สุกี้วงษ์ศรี - อร่อยเต็มจาน อิ่มเต็มใจ (Suki Wongsri)</title>
-    
+
+    <!-- Preconnect เพื่อเร่งความเร็วการเชื่อมต่อ CDN ภายนอก -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- โหลด Google Fonts แบบไม่บล็อกการแสดงผลหน้าเว็บ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap">
+    </noscript>
+
+    <!-- โหลด FontAwesome แบบไม่บล็อกการแสดงผลหน้าเว็บ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,12 +53,6 @@
         }
     </script>
 
-    <!-- Google Fonts & FontAwesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -51,208 +63,4 @@
             font-family: 'Prompt', sans-serif;
         }
         .hero-overlay {
-            background: linear-gradient(180deg, rgba(15, 17, 21, 0.75) 0%, rgba(15, 17, 21, 0.85) 100%);
-        }
-        .tab-btn.active {
-            background-color: #991B1B;
-            color: #ffffff;
-            border-color: #991B1B;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F5F2EB;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D97706;
-            border-radius: 4px;
-        }
-    </style>
-</head>
-<body class="bg-brand-cream text-brand-dark antialiased">
-
-    <!-- Loading Overlay Screen -->
-    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-brand-cream flex flex-col items-center justify-center transition-opacity duration-300 opacity-100 pointer-events-auto">
-        <div class="relative flex items-center justify-center mb-4">
-            <div class="w-20 h-20 border-4 border-brand-red/20 border-t-brand-red rounded-full animate-spin"></div>
-            <div class="absolute w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
-                ส
-            </div>
-        </div>
-        <p class="font-prompt text-brand-dark text-lg font-semibold tracking-wide animate-pulse">
-            กำลังโหลดข้อมูล...
-        </p>
-    </div>
-
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-md border-b border-brand-border transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#hero" class="nav-link flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
-                    ส
-                </div>
-                <div>
-                    <span class="text-xl font-bold font-prompt text-brand-red block leading-tight">สุกี้วงษ์ศรี</span>
-                    <span class="text-xs text-brand-muted tracking-wider uppercase font-medium">Suki Wongsri</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#hero" class="nav-link text-brand-dark hover:text-brand-red transition-colors">หน้าแรก</a>
-                <a href="#highlights" class="nav-link text-brand-dark hover:text-brand-red transition-colors">จุดเด่นร้าน</a>
-                <a href="#menu" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เมนูแนะนำ</a>
-                <a href="#about" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เกี่ยวกับเรา</a>
-                <a href="#contact" class="nav-link text-brand-dark hover:text-brand-red transition-colors">ติดต่อ/พิกัดร้าน</a>
-            </nav>
-
-            <!-- Desktop Call CTA -->
-            <div class="hidden md:flex items-center gap-4">
-                <a href="tel:0942519483" class="bg-brand-red hover:bg-brand-redhover text-white px-5 py-2.5 rounded-full font-prompt font-medium transition-all shadow-sm flex items-center gap-2">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>โทรสั่งอาหาร 094-251-9483</span>
-                </a>
-            </div>
-
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-dark focus:outline-none p-2" aria-label="เปิดเมนูนำทาง">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-border px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#hero" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">หน้าแรก</a>
-            <a href="#highlights" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">จุดเด่นร้าน</a>
-            <a href="#menu" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เมนูแนะนำ</a>
-            <a href="#about" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เกี่ยวกับเรา</a>
-            <a href="#contact" class="nav-link mobile-link block py-2 font-medium">ติดต่อ/พิกัดร้าน</a>
-            <a href="tel:0942519483" class="mt-4 w-full bg-brand-red hover:bg-brand-redhover text-white py-3 rounded-xl font-prompt font-medium flex items-center justify-center gap-2">
-                <i class="fa-solid fa-phone"></i> โทรสั่งอาหาร 094-251-9483
-            </a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative bg-brand-dark text-white min-h-[520px] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=80" alt="สุกี้วงษ์ศรี" class="w-full h-full object-cover opacity-35">
-            <div class="hero-overlay absolute inset-0"></div>
-        </div>
-
-        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-20">
-            <span class="inline-block bg-brand-gold/20 text-brand-goldlight px-4 py-1.5 rounded-full text-sm font-prompt font-medium border border-brand-gold/30 mb-6">
-                ✨ ต้นตำรับความอร่อย น้ำจิ้มสูตรเด็ด
-            </span>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-prompt leading-tight mb-6">
-                สุกี้วงษ์ศรี <br class="hidden sm:inline">
-                <span class="text-brand-gold">อร่อยเต็มจาน อิ่มเต็มใจ</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-300 font-sarabun max-w-2xl mx-auto mb-10 leading-relaxed">
-                เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ คัดสรรอย่างดี พร้อมน้ำจิ้มสุกี้รสเด็ดเข้มข้น หอมกลิ่นเต้าหู้ยี้และพริกกระเทียมสด
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#menu" class="nav-link w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
-                    ดูเมนูอาหาร
-                </a>
-                <a href="#contact" class="nav-link w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
-                    เส้นทางมายังร้าน
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Highlights Section -->
-    <section id="highlights" class="py-16 bg-brand-warmbg border-b border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold font-prompt text-brand-dark mb-3">ทำไมต้องสุกี้วงษ์ศรี?</h2>
-                <p class="text-brand-muted">เอกลักษณ์ความอร่อยที่ทำให้ลูกค้าติดใจและกลับมาทานซ้ำเสมอ</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
-                        <i class="fa-solid fa-pepper-hot"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำจิ้มสูตรเด็ดดั้งเดิม</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        ปรุงสดใหม่ทุกวัน เข้มข้น กลมกล่อม หอมกลิ่นกระเทียมสดและพริกขี้หนูสวน
-                    </p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-goldlight text-brand-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
-                        <i class="fa-solid fa-drumstick-bite"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">วัตถุดิบสดใหม่ คัดเกรด</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        เนื้อหมูหมัก นุ่มละมุนลิ้น อาหารทะเลสดใหม่ ผักสดสะอาด ส่งตรงจากฟาร์มทุกเช้า
-                    </p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
-                        <i class="fa-solid fa-bowl-food"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำซุปกลมกล่อม</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        เคี่ยวนานกว่า 6 ชั่วโมงด้วยกระดูกหมูและผักหวานธรรมชาติ ให้รสสัมผัสหอมหวานกลมกล่อม
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Showcase Section -->
-    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Our Menu</span>
-            <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-4">รายการอาหารทั้งหมด</h2>
-            <p class="text-brand-muted">เลือกดูตามหมวดหมู่ สลับแบบแห้ง/น้ำในเมนูสุกี้ และกดเพิ่มท็อปปิ้งเพื่อดูราคารวมแบบเรียลไทม์</p>
-        </div>
-
-        <!-- Menu Category Filter Tabs -->
-        <div id="menu-tabs" class="flex flex-wrap items-center justify-center gap-2 mb-14">
-            <button type="button" class="tab-btn active cursor-pointer px-5 py-2.5 rounded-full border border-brand-border font-prompt text-sm font-medium transition-all" onclick="filterMenu('all', this)">
-                ทั้งหมด
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('suki', this)">
-                สุกี้
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('friedrice', this)">
-                ข้าวผัด
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('padseeew', this)">
-                ผัดซีอิ๊ว
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('radna', this)">
-                ราดหน้า
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('khamoo', this)">
-                ข้าวขาหมู
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('krapao', this)">
-                กะเพรา
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('satay', this)">
-                หมูสะเต๊ะ
-            </button>
-            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('drinks', this)">
-                เครื่องดื่ม
-            </button>
-        </div>
-
-        <!-- Menu Categories Container (Rendered cleanly from structured data) -->
-        <div id="menu-categories-container" class="space-y-20"></div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-brand-warmbg border-t border-b border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-brand-cream">
-                        <img 
-                            src="
+            background: linear-gradient(180deg, rgba(15, 17, 2
