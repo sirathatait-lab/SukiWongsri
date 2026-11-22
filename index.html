@@ -5,25 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="สุกี้วงษ์ศรี อร่อยเต็มจาน อิ่มเต็มใจ เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ พร้อมน้ำจิ้มสุกี้สูตรเด็ดเข้มข้น โทรสั่งอาหาร 0942519483">
     <title>สุกี้วงษ์ศรี - อร่อยเต็มจาน อิ่มเต็มใจ (Suki Wongsri)</title>
-
-    <!-- Preconnect เพื่อเร่งความเร็วการเชื่อมต่อ CDN ภายนอก -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-    <!-- โหลด Google Fonts แบบไม่บล็อกการแสดงผลหน้าเว็บ -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap">
-    </noscript>
-
-    <!-- โหลด FontAwesome แบบไม่บล็อกการแสดงผลหน้าเว็บ -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    </noscript>
-
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -53,6 +35,12 @@
         }
     </script>
 
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -63,4 +51,1119 @@
             font-family: 'Prompt', sans-serif;
         }
         .hero-overlay {
-            background: linear-gradient(180deg, rgba(15, 17, 2
+            background: linear-gradient(180deg, rgba(15, 17, 21, 0.75) 0%, rgba(15, 17, 21, 0.85) 100%);
+        }
+        .tab-btn.active {
+            background-color: #991B1B;
+            color: #ffffff;
+            border-color: #991B1B;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F2EB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark antialiased">
+
+    <!-- Loading Overlay Screen -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-brand-cream flex flex-col items-center justify-center transition-opacity duration-300 opacity-100 pointer-events-auto">
+        <div class="relative flex items-center justify-center mb-4">
+            <div class="w-20 h-20 border-4 border-brand-red/20 border-t-brand-red rounded-full animate-spin"></div>
+            <div class="absolute w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
+                ส
+            </div>
+        </div>
+        <p class="font-prompt text-brand-dark text-lg font-semibold tracking-wide animate-pulse">
+            กำลังโหลดข้อมูล...
+        </p>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-md border-b border-brand-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="nav-link flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
+                    ส
+                </div>
+                <div>
+                    <span class="text-xl font-bold font-prompt text-brand-red block leading-tight">สุกี้วงษ์ศรี</span>
+                    <span class="text-xs text-brand-muted tracking-wider uppercase font-medium">Suki Wongsri</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#hero" class="nav-link text-brand-dark hover:text-brand-red transition-colors">หน้าแรก</a>
+                <a href="#highlights" class="nav-link text-brand-dark hover:text-brand-red transition-colors">จุดเด่นร้าน</a>
+                <a href="#menu" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เมนูแนะนำ</a>
+                <a href="#about" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เกี่ยวกับเรา</a>
+                <a href="#contact" class="nav-link text-brand-dark hover:text-brand-red transition-colors">ติดต่อ/พิกัดร้าน</a>
+            </nav>
+
+            <!-- Desktop Call CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="tel:0942519483" class="bg-brand-red hover:bg-brand-redhover text-white px-5 py-2.5 rounded-full font-prompt font-medium transition-all shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>โทรสั่งอาหาร 094-251-9483</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-dark focus:outline-none p-2" aria-label="เปิดเมนูนำทาง">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-border px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#hero" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">หน้าแรก</a>
+            <a href="#highlights" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">จุดเด่นร้าน</a>
+            <a href="#menu" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เมนูแนะนำ</a>
+            <a href="#about" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เกี่ยวกับเรา</a>
+            <a href="#contact" class="nav-link mobile-link block py-2 font-medium">ติดต่อ/พิกัดร้าน</a>
+            <a href="tel:0942519483" class="mt-4 w-full bg-brand-red hover:bg-brand-redhover text-white py-3 rounded-xl font-prompt font-medium flex items-center justify-center gap-2">
+                <i class="fa-solid fa-phone"></i> โทรสั่งอาหาร 094-251-9483
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-brand-dark text-white min-h-[520px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=80" alt="สุกี้วงษ์ศรี" class="w-full h-full object-cover opacity-35">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-20">
+            <span class="inline-block bg-brand-gold/20 text-brand-goldlight px-4 py-1.5 rounded-full text-sm font-prompt font-medium border border-brand-gold/30 mb-6">
+                ✨ ต้นตำรับความอร่อย น้ำจิ้มสูตรเด็ด
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-prompt leading-tight mb-6">
+                สุกี้วงษ์ศรี <br class="hidden sm:inline">
+                <span class="text-brand-gold">อร่อยเต็มจาน อิ่มเต็มใจ</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 font-sarabun max-w-2xl mx-auto mb-10 leading-relaxed">
+                เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ คัดสรรอย่างดี พร้อมน้ำจิ้มสุกี้รสเด็ดเข้มข้น หอมกลิ่นเต้าหู้ยี้และพริกกระเทียมสด
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="nav-link w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
+                    ดูเมนูอาหาร
+                </a>
+                <a href="#contact" class="nav-link w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
+                    เส้นทางมายังร้าน
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="py-16 bg-brand-warmbg border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold font-prompt text-brand-dark mb-3">ทำไมต้องสุกี้วงษ์ศรี?</h2>
+                <p class="text-brand-muted">เอกลักษณ์ความอร่อยที่ทำให้ลูกค้าติดใจและกลับมาทานซ้ำเสมอ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำจิ้มสูตรเด็ดดั้งเดิม</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        ปรุงสดใหม่ทุกวัน เข้มข้น กลมกล่อม หอมกลิ่นกระเทียมสดและพริกขี้หนูสวน
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-goldlight text-brand-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">วัตถุดิบสดใหม่ คัดเกรด</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เนื้อหมูหมัก นุ่มละมุนลิ้น อาหารทะเลสดใหม่ ผักสดสะอาด ส่งตรงจากฟาร์มทุกเช้า
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand-lightred text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-prompt text-brand-dark mb-3">น้ำซุปกลมกล่อม</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        เคี่ยวนานกว่า 6 ชั่วโมงด้วยกระดูกหมูและผักหวานธรรมชาติ ให้รสสัมผัสหอมหวานกลมกล่อม
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Showcase Section -->
+    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Our Menu</span>
+            <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-4">รายการอาหารทั้งหมด</h2>
+            <p class="text-brand-muted">เลือกดูตามหมวดหมู่ สลับแบบแห้ง/น้ำในเมนูสุกี้ และกดเพิ่มท็อปปิ้งเพื่อดูราคารวมแบบเรียลไทม์</p>
+        </div>
+
+        <!-- Menu Category Filter Tabs -->
+        <div id="menu-tabs" class="flex flex-wrap items-center justify-center gap-2 mb-14">
+            <button type="button" class="tab-btn active cursor-pointer px-5 py-2.5 rounded-full border border-brand-border font-prompt text-sm font-medium transition-all" onclick="filterMenu('all', this)">
+                ทั้งหมด
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('suki', this)">
+                สุกี้
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('friedrice', this)">
+                ข้าวผัด
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('padseeew', this)">
+                ผัดซีอิ๊ว
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('radna', this)">
+                ราดหน้า
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('khamoo', this)">
+                ข้าวขาหมู
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('krapao', this)">
+                กะเพรา
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('satay', this)">
+                หมูสะเต๊ะ
+            </button>
+            <button type="button" class="tab-btn cursor-pointer px-5 py-2.5 rounded-full border border-brand-border bg-white text-brand-dark hover:bg-brand-warmbg font-prompt text-sm font-medium transition-all" onclick="filterMenu('drinks', this)">
+                เครื่องดื่ม
+            </button>
+        </div>
+
+        <!-- Menu Categories Container (Rendered cleanly from structured data) -->
+        <div id="menu-categories-container" class="space-y-20"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-warmbg border-t border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-brand-cream">
+                        <img 
+                            src="https://i.postimg.cc/rz6T47TF/file-000000008c808211b2c02dab21ef8bc1.png" 
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=80';"
+                            alt="บรรยากาศและอาหารร้านสุกี้วงษ์ศรี" 
+                            class="w-full h-[400px] object-cover"
+                        >
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-brand-red text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                        <span class="block text-3xl font-bold font-prompt">มั่นใจในรสชาติ</span>
+                        <span class="text-sm font-prompt">กับราคาที่เข้าถึงง่าย</span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">About Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-6">เรื่องราวของ "สุกี้วงษ์ศรี"</h2>
+                    <p class="text-brand-dark/80 font-sarabun leading-relaxed mb-4">
+                        สุกี้วงษ์ศรี จุดเริ่มต้นจากคุณยายชวดท่านเคยเป็นแม่ครัวในร้านภัตคารมาก่อนและมีฝีมือด้านการทำอาหารเป็นอย่างมาก ท่านได้ริเริ่มคิดค้นสูตรน้ำจิ้มสุกี้ของตนเองและได้ถ่ายทอดวิชาความรู้สูตรอาหารมาให้รุ่นลูกจวนจนมาถึงรุ่นหลานที่นำสูตรของท่าน
+                        นำมาสู่การพัฒนาน้ำจิ้มสุกี้สูตรเฉพาะเข้มข้น หอมน้ำมันงาพริกกระเทียมที่ปรุงอย่างพิถีพิถัน
+                    </p>
+                    <p class="text-brand-dark/80 font-sarabun leading-relaxed mb-6">
+                        เราให้ความสำคัญกับความสด สะอาด และคุณภาพของวัตถุดิบเป็นอันดับหนึ่ง หมูหมักนุ่มละมุนลิ้น ผักสดสะอาดปลอดสาร เพื่อให้ทุกจานที่เสิร์ฟถึงโต๊ะคุณ เต็มไปด้วยรสชาติและคุณภาพที่ยอดเยี่ยมที่สุด
+                    </p>
+                    <div class="flex flex-wrap items-center gap-6 pt-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+                            <span class="font-prompt font-medium">ผักสดสะอาดทุกวัน</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+                            <span class="font-prompt font-medium">ไม่ใส่สารกันบูด</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Contact & Location</span>
+            <h2 class="text-3xl font-bold font-prompt text-brand-dark mt-1 mb-3">ที่ตั้งและการเดินทาง</h2>
+            <p class="text-brand-muted">แวะมาอิ่มอร่อยกับพวกเราได้ทุกวัน หรือโทรสั่งซื้อล่วงหน้าได้เลย</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-lightred text-brand-red rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">ที่ตั้งร้าน</h3>
+                <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                    อยู่ระหว่างธนาคารกรุงไทยและ MR.DIY สาขาคลองสาม <br>ตำบลคลองสาม อำเภอคลองหลวง จังหวัดปทุมธานี
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E0%B8%AA%E0%B8%B8%E0%B8%81%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%A9%E0%B9%8C%E0%B8%A8%E0%B8%A3%E0%B8%B5+%E0%B8%84%E0%B8%A5%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A1+%E0%B8%84%E0%B8%A5%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87+%E0%B8%9B%E0%B8%97%E0%B8%B8%E0%B8%A1%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5" target="_blank" rel="noopener noreferrer" class="text-brand-red font-prompt text-sm font-semibold hover:underline inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-map-location-dot"></i> เปิดดูใน Google Maps
+                </a>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-goldlight text-brand-gold rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">เวลาเปิด - ปิด</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    เปิดบริการทุกวัน <br>
+                    <span class="font-semibold text-brand-dark">11:00 น. - 20:00 น.</span>
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-brand-lightred text-brand-red rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h3 class="text-lg font-bold font-prompt text-brand-dark mb-2">ติดต่อสั่งอาหาร</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    โทร: <a href="tel:0942519483" class="text-brand-red font-semibold hover:underline">0942519483</a><br>
+                    Line ID: <a href="https://line.me/ti/p/~@sukiwongsri" target="_blank" rel="noopener noreferrer" class="text-brand-dark font-semibold hover:underline">@sukiwongsri</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white border-t border-white/10 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white text-lg font-bold font-prompt">
+                        ส
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold font-prompt text-white block leading-tight">สุกี้วงษ์ศรี</span>
+                        <span class="text-xs text-gray-400">อร่อยเต็มจาน อิ่มเต็มใจ • โทร <a href="tel:0942519483" class="text-brand-gold hover:underline">0942519483</a></span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="tel:0942519483" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="โทร 0942519483">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <a href="https://line.me/ti/p/~@sukiwongsri" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="Line">
+                        <i class="fa-brands fa-line"></i>
+                    </a>
+                    <a href="#contact" class="nav-link w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="พิกัดร้าน">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center text-xs text-gray-400 font-sarabun">
+                &copy; 2026 สุกี้วงษ์ศรี (Suki Wongsri). All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Scripts -->
+    <script>
+        const FALLBACK_IMG = 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80';
+
+        // ข้อมูลรายการอาหารทั้ง 8 หมวดหมู่หลัก
+        const MENU_CATEGORIES = [
+            {
+                id: 'suki',
+                title: 'สุกี้',
+                subtitle: 'กดปุ่มสลับเลือกเป็น สุกี้แห้ง หรือ สุกี้น้ำ ได้ในแต่ละเมนู พร้อมเพิ่มท็อปปิ้งได้ตามใจ',
+                tag: 'เสิร์ฟพร้อมน้ำจิ้มสุกี้สูตรเด็ด',
+                icon: 'fa-fire-burner',
+                iconBg: 'bg-brand-red text-white',
+                isSuki: true,
+                toppings: [
+                    { name: 'ไข่ไก่', price: 10 },
+                    { name: 'วุ้นเส้นเพิ่ม', price: 10 },
+                    { name: 'พิเศษ', price: 15 }
+                ],
+                items: [
+                    {
+                        dryTitle: 'สุกี้แห้งหมู',
+                        soupTitle: 'สุกี้น้ำหมู',
+                        price: 65,
+                        badge: 'ยอดนิยม 🔥',
+                        dryDesc: 'สุกี้ผัดแห้งหอมกลิ่นกระทะ หมูหมักสูตรเฉพาะนุ่มละมุน พร้อมผักสดและน้ำจิ้มสุกี้เข้มข้น',
+                        soupDesc: 'สุกี้น้ำซุปกระดูกหมูเคี่ยวนาน 6 ชม. หมูหมักนุ่มละมุน ซดร้อนๆ คล่องคอ',
+                        dryImg: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80',
+                        soupImg: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        dryTitle: 'สุกี้แห้งไก่',
+                        soupTitle: 'สุกี้น้ำไก่',
+                        price: 60,
+                        dryDesc: 'เนื้ออกไก่หมักนุ่ม ไร้มัน ผัดหอมกลิ่นกระทะกับผักกวางตุ้ง ผักกาดขาว และวุ้นเส้นเหนียวนุ่ม',
+                        soupDesc: 'เนื้ออกไก่หมักนุ่มในน้ำซุปใสรสกลมกล่อม พร้อมผักสดและวุ้นเส้นเหนียวนุ่ม',
+                        dryImg: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+                        soupImg: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        dryTitle: 'สุกี้แห้งกุ้ง',
+                        soupTitle: 'สุกี้น้ำกุ้ง',
+                        price: 75,
+                        dryDesc: 'กุ้งสดเนื้อเด้งตัวโต ผัดเคล้ากับไข่ไก่ วุ้นเส้น และซอสสุกี้สูตรเข้มข้นหอมกรุ่น',
+                        soupDesc: 'กุ้งสดเนื้อเด้งตัวโต ต้มในน้ำซุปสุกี้หอมหวาน พร้อมผักสดกรอบและน้ำจิ้มรสเด็ด',
+                        dryImg: 'https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=80',
+                        soupImg: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        dryTitle: 'สุกี้แห้งปลาหมึก',
+                        soupTitle: 'สุกี้น้ำปลาหมึก',
+                        price: 75,
+                        dryDesc: 'ปลาหมึกสดหั่นชิ้นพอดีคำ กรอบเด้งไม่คาว ผัดแห้งกับวุ้นเส้น ไข่ไก่ และผักสด',
+                        soupDesc: 'ปลาหมึกสดกรอบเด้ง ลวกสุกกำลังดีในน้ำซุปกลมกล่อม เสิร์ฟคู่กับน้ำจิ้มสูตรโบราณ',
+                        dryImg: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80',
+                        soupImg: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        dryTitle: 'สุกี้แห้งทะเล',
+                        soupTitle: 'สุกี้น้ำทะเล',
+                        price: 85,
+                        badge: 'แนะนำ ⭐',
+                        dryDesc: 'จัดเต็มทั้งกุ้งตัวโต ปลาหมึกสดกรอบ และเนื้อปลา ผัดแห้งไฟแรงหอมกลิ่นกระทะ',
+                        soupDesc: 'กุ้งตัวโต ปลาหมึกสดกรอบ และเนื้อปลา ในน้ำซุปรสกลมกล่อม ซดร้อนๆ คล่องคอ',
+                        dryImg: 'https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=800&q=80',
+                        soupImg: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'friedrice',
+                title: 'ข้าวผัด',
+                subtitle: 'ข้าวหอมมะลิผัดไฟแรงเม็ดร่วนหอมกลิ่นกระทะ กดเพิ่มท็อปปิ้งได้ทันที',
+                tag: 'เสิร์ฟพร้อมพริกน้ำปลาและแตงกวาสด',
+                icon: 'fa-utensils',
+                iconBg: 'bg-brand-gold text-white',
+                toppings: [
+                    { name: 'ไข่ดาว', price: 10 },
+                    { name: 'ไข่เจียว', price: 15 },
+                    { name: 'พิเศษ', price: 15 }
+                ],
+                items: [
+                    {
+                        title: 'ข้าวผัดหมู',
+                        price: 55,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'ข้าวหอมมะลิผัดไข่ไฟแรง เม็ดร่วนไม่แฉะ พร้อมหมูหมักนุ่มชิ้นโตและคะน้ากรอบ',
+                        img: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ข้าวผัดไก่',
+                        price: 55,
+                        desc: 'เนื้ออกไก่นุ่มผัดกับข้าวหอมมะลิและไข่ไก่สด ปรุงรสกลมกล่อม หอมกลิ่นกระทะ',
+                        img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ข้าวผัดกุ้ง',
+                        price: 70,
+                        badge: 'แนะนำ ⭐',
+                        desc: 'กุ้งสดตัวโตเนื้อหวานเด้ง ผัดคลุกเคล้ากับข้าวหอมมะลิและไข่ไก่ โรยต้นหอมซอย',
+                        img: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ข้าวผัดปลาหมึก',
+                        price: 70,
+                        desc: 'ปลาหมึกสดเนื้อแน่นกรอบ ผัดไฟแรงกับข้าวหอมมะลิ ปรุงรสกลมกล่อมหอมกระทะ',
+                        img: 'https://images.unsplash.com/photo-1630914441929-0d8ea69f95e6?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ข้าวผัดทะเล',
+                        price: 80,
+                        desc: 'รวมความสดจากทะเลทั้งกุ้งตัวโตและปลาหมึกกรอบ ผัดเข้ากับข้าวหอมมะลิร้อนๆ',
+                        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'padseeew',
+                title: 'ผัดซีอิ๊ว',
+                subtitle: 'เส้นใหญ่เหนียวนุ่มผัดซอสซีอิ๊วดำหอมกลิ่นกระทะ คู่กับยอดคะน้ากรอบ',
+                tag: 'ผัดสดใหม่จานต่อจาน',
+                icon: 'fa-bowl-rice',
+                iconBg: 'bg-brand-dark text-white',
+                toppings: [
+                    { name: 'ไข่ดาว', price: 10 },
+                    { name: 'เพิ่มเส้น', price: 10 },
+                    { name: 'พิเศษ', price: 15 }
+                ],
+                items: [
+                    {
+                        title: 'ผัดซีอิ๊วหมู',
+                        price: 55,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'เส้นใหญ่เหนียวนุ่มผัดกับหมูหมักนุ่มสูตรทางร้าน ไข่ไก่ และยอดคะน้ากรอบ หอมกลิ่นซีอิ๊วคั่วกระทะ',
+                        img: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ผัดซีอิ๊วไก่',
+                        price: 55,
+                        desc: 'เนื้ออกไก่หมักนุ่มผัดกับเส้นใหญ่ ไข่ไก่ และผักคะน้าสด รสชาติกลมกล่อมหวานเค็มลงตัว',
+                        img: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ผัดซีอิ๊วกุ้ง',
+                        price: 70,
+                        desc: 'กุ้งสดเนื้อเด้งผัดคลุกเคล้ากับเส้นใหญ่ซอสซีอิ๊วหอมกรุ่น ไข่ไก่ และยอดคะน้าอ่อน',
+                        img: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ผัดซีอิ๊วปลาหมึก',
+                        price: 70,
+                        desc: 'ปลาหมึกสดกรอบเด้งผัดไฟแรงกับเส้นใหญ่และซีอิ๊วดำสูตรพิเศษ หอมกลิ่นกระทะ',
+                        img: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ผัดซีอิ๊วทะเล',
+                        price: 80,
+                        badge: 'แนะนำ ⭐',
+                        desc: 'จัดเต็มเครื่องทะเลทั้งกุ้งสดตัวโตและปลาหมึกกรอบ ผัดเข้ากับเส้นใหญ่เหนียวนุ่มและยอดคะน้า',
+                        img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'radna',
+                title: 'ราดหน้า',
+                subtitle: 'เส้นใหญ่คั่วกระทะหอมกรุ่น ราดน้ำซุปข้นกลมกล่อมเข้มข้นพร้อมยอดคะน้าอ่อน',
+                tag: 'น้ำราดหน้าเคี่ยวเข้มข้น',
+                icon: 'fa-plate-wheat',
+                iconBg: 'bg-brand-red text-white',
+                toppings: [
+                    { name: 'ไข่ดาว', price: 10 },
+                    { name: 'เพิ่มเส้น', price: 10 },
+                    { name: 'พิเศษ', price: 15 }
+                ],
+                items: [
+                    {
+                        title: 'ราดหน้าหมู',
+                        price: 55,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'หมูหมักนุ่มชิ้นใหญ่เต็มคำ ในน้ำราดหน้ารสกลมกล่อม ราดบนเส้นใหญ่คั่วหอมกลิ่นกระทะ',
+                        img: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ราดหน้าไก่',
+                        price: 55,
+                        desc: 'เนื้อไก่หมักนุ่มละมุนลิ้น ผัดกับยอดคะน้ากรอบในน้ำราดหน้าร้อนๆ หอมเต้าเจี้ยวอย่างดี',
+                        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ราดหน้ากุ้ง',
+                        price: 70,
+                        desc: 'กุ้งสดตัวโตเนื้อเด้งหวาน ราดบนเส้นใหญ่คั่วไฟแรงและผักคะน้ากรอบสดใหม่',
+                        img: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ราดหน้าปลาหมึก',
+                        price: 70,
+                        desc: 'ปลาหมึกสดหั่นชิ้นพอดีคำ กรอบเด้งในน้ำราดหน้าเข้มข้นหอมกรุ่น',
+                        img: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ราดหน้าทะเล',
+                        price: 80,
+                        badge: 'แนะนำ ⭐',
+                        desc: 'จัดเต็มกุ้งสดและปลาหมึกกรอบชิ้นโต ในน้ำราดหน้ารสเข้มข้นกลมกล่อม',
+                        img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'khamoo',
+                title: 'ข้าวขาหมู',
+                subtitle: 'ขาหมูพะโล้ตุ๋นเครื่องเทศสมุนไพรจนเปื่อยนุ่มละลายในปาก เสิร์ฟพร้อมน้ำจิ้มรสเด็ด',
+                tag: 'ตุ๋นเปื่อยนุ่ม หอมเครื่องพะโล้',
+                icon: 'fa-drumstick-bite',
+                iconBg: 'bg-brand-gold text-white',
+                items: [
+                    {
+                        title: 'ข้าวขาหมู',
+                        price: 60,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'เนื้อขาหมูและหนังนุ่มละมุน ราดน้ำพะโล้หอมเข้มข้น เสิร์ฟคู่ผักกาดดองและพริกน้ำส้ม',
+                        img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้', price: 10 },
+                            { name: 'เพิ่มไส้', price: 15 },
+                            { name: 'พิเศษ', price: 15 }
+                        ]
+                    },
+                    {
+                        title: 'ข้าวคากิ',
+                        price: 65,
+                        desc: 'คากิตุ๋นจนเปื่อยนุ่มเด้ง อุดมด้วยคอลลาเจน ราดน้ำพะโล้รสกลมกล่อมบนข้าวหอมมะลิ',
+                        img: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้', price: 10 },
+                            { name: 'เพิ่มไส้', price: 15 },
+                            { name: 'พิเศษ', price: 15 }
+                        ]
+                    },
+                    {
+                        title: 'ข้าวขาหมู+คากิ',
+                        price: 75,
+                        badge: 'แนะนำ ⭐',
+                        desc: 'อิ่มครบทั้งเนื้อขาหมูเปื่อยนุ่มและคากิเด้งหนึบในจานเดียว พร้อมผักกาดดองและน้ำจิ้มสูตรเด็ด',
+                        img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้', price: 10 },
+                            { name: 'เพิ่มไส้', price: 15 },
+                            { name: 'พิเศษ', price: 15 }
+                        ]
+                    },
+                    {
+                        title: 'ขาหมู (กับข้าว)',
+                        price: 120,
+                        desc: 'ขาหมูพะโล้สับจานใหญ่ เนื้อนุ่มหนังเด้ง ทานร่วมกันได้ทั้งครอบครัว',
+                        img: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้ 2 ฟอง', price: 20 },
+                            { name: 'เพิ่มไส้', price: 25 },
+                            { name: 'จานใหญ่พิเศษ', price: 40 }
+                        ]
+                    },
+                    {
+                        title: 'คากิ (กับข้าว)',
+                        price: 130,
+                        desc: 'คากิพะโล้ตุ๋นเปื่อยทั้งจาน ฉ่ำน้ำพะโล้เข้มข้น พร้อมผักกาดดองและน้ำจิ้มรสจัดจ้าน',
+                        img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้ 2 ฟอง', price: 20 },
+                            { name: 'เพิ่มผักกาดดอง', price: 15 },
+                            { name: 'จานใหญ่พิเศษ', price: 40 }
+                        ]
+                    },
+                    {
+                        title: 'รวมขาหมู (กับข้าว)',
+                        price: 150,
+                        badge: 'จัดเต็ม 🔥',
+                        desc: 'รวมทุกความอร่อยทั้งเนื้อ หนัง คากิ และไส้พะโล้ ตุ๋นเปื่อยนุ่มจานใหญ่จุใจ',
+                        img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'ไข่พะโล้ 2 ฟอง', price: 20 },
+                            { name: 'เพิ่มไส้', price: 25 },
+                            { name: 'จานใหญ่พิเศษ', price: 40 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'krapao',
+                title: 'กะเพรา',
+                subtitle: 'ผัดกะเพราพริกกระเทียมตำสด หอมใบกะเพราแท้รสจัดจ้านถึงเครื่อง',
+                tag: 'เลือกความเผ็ดได้ 4 ระดับ',
+                icon: 'fa-pepper-hot',
+                iconBg: 'bg-brand-red text-white',
+                showSpicinessBanner: true,
+                toppings: [
+                    { name: 'ไข่ดาว', price: 10 },
+                    { name: 'ไข่เจียว', price: 15 },
+                    { name: 'พิเศษ', price: 15 }
+                ],
+                items: [
+                    {
+                        title: 'กะเพราหมู',
+                        price: 55,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'หมูสับ/หมูชิ้นผัดพริกกระเทียมและใบกะเพราหอมฉุย ปรุงรสกลมกล่อมจัดจ้าน',
+                        img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'กะเพราไก่',
+                        price: 55,
+                        desc: 'เนื้อไก่สับ/ไก่ชิ้นผัดกะเพราไฟแรง หอมกลิ่นใบกะเพราแท้และพริกขี้หนูสวน',
+                        img: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'กะเพรากุ้ง',
+                        price: 70,
+                        desc: 'กุ้งสดตัวโตเนื้อเด้ง ผัดคลุกเคล้าซอสกะเพราสูตรเด็ดของทางร้าน',
+                        img: 'https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'กะเพราปลาหมึก',
+                        price: 70,
+                        desc: 'ปลาหมึกสดกรอบผัดพริกกระเทียมและใบกะเพรา รสเข้มข้นถึงเครื่อง',
+                        img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'กะเพราทะเล',
+                        price: 80,
+                        badge: 'แนะนำ ⭐',
+                        desc: 'รวมกุ้งสดและปลาหมึกกรอบ ผัดกะเพราไฟแรงรสจัดจ้านถึงใจ',
+                        img: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'satay',
+                title: 'หมูสะเต๊ะ',
+                subtitle: 'หมูสะเต๊ะหมักเครื่องเทศสูตรโบราณ ย่างเตาถ่านหอมกรุ่น เสิร์ฟพร้อมน้ำจิ้มถั่วเข้มข้นและอาจาด',
+                tag: 'ย่างสดใหม่หอมเตาถ่าน',
+                icon: 'fa-fire',
+                iconBg: 'bg-brand-gold text-white',
+                toppings: [
+                    { name: 'ขนมปังปิ้ง', price: 10 },
+                    { name: 'อาจาดเพิ่ม', price: 10 },
+                    { name: 'น้ำจิ้มสะเต๊ะเพิ่ม', price: 15 }
+                ],
+                items: [
+                    {
+                        title: 'ชุดเล็ก (6 ไม้)',
+                        price: 60,
+                        desc: 'หมูสะเต๊ะเนื้อนุ่มติดมันกำลังดี 6 ไม้ เสิร์ฟพร้อมน้ำจิ้มสะเต๊ะสูตรเข้มข้นและอาจาดแตงกวา',
+                        img: 'https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'ชุดใหญ่ (12 ไม้)',
+                        price: 110,
+                        badge: 'คุ้มค่าแนะนำ ⭐',
+                        desc: 'หมูสะเต๊ะย่างหอมกรุ่นชุดใหญ่ 12 ไม้ อิ่มจุใจพร้อมน้ำจิ้มถั่วคั่วหอมมันและอาจาดครบชุด',
+                        img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80'
+                    }
+                ]
+            },
+            {
+                id: 'drinks',
+                title: 'เครื่องดื่ม',
+                subtitle: 'เครื่องดื่มสมุนไพรต้มสดสูตรโบราณและน้ำอัดลมเย็นชื่นใจ ดับกระหายคลายร้อน',
+                tag: 'เย็นสดชื่นทุกแก้ว',
+                icon: 'fa-glass-water',
+                iconBg: 'bg-brand-dark text-white',
+                items: [
+                    {
+                        title: 'น้ำเก๊กฮวย',
+                        price: 25,
+                        badge: 'ต้มสดโบราณ',
+                        desc: 'ต้มจากดอกเก๊กฮวยแท้ หวานกำลังดี หอมชื่นใจ ดับกระหายคลายร้อน',
+                        img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'เพิ่มบุกบราวน์ชูการ์', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำลำใย',
+                        price: 25,
+                        desc: 'น้ำลำใยสีทองต้มสดหอมหวาน พร้อมเนื้อลำใยเคี้ยวเพลิน',
+                        img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มเนื้อลำใย', price: 10 },
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำกระเจี๊ยบ',
+                        price: 25,
+                        desc: 'ต้มจากดอกกระเจี๊ยบแดงแท้ เปรี้ยวอมหวานชุ่มคอ สดชื่นทันทีที่ดื่ม',
+                        img: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'เพิ่มบุกบราวน์ชูการ์', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำชาไทย',
+                        price: 30,
+                        badge: 'ยอดนิยม 🔥',
+                        desc: 'ชาไทยสูตรเข้มข้น หอมกลิ่นใบชาแท้ ผสมนมสดหวานมันลงตัว',
+                        img: 'https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มไข่มุก', price: 10 },
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำชาเขียว',
+                        price: 30,
+                        desc: 'ชาเขียวนมสดหอมละมุน รสกลมกล่อมหวานกำลังดี เย็นชื่นใจ',
+                        img: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มไข่มุก', price: 10 },
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำชาดำเย็น',
+                        price: 25,
+                        desc: 'ชาดำเย็นชงสด หอมเข้มกลิ่นชาไทยแท้ หวานเย็นชื่นใจแก้เลี่ยนได้ดี',
+                        img: 'https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'เพิ่มมะนาวสด', price: 5 },
+                            { name: 'เพิ่มเฉาก๊วย', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    },
+                    {
+                        title: 'น้ำอัดลม (เป็ปซี่/เขียว/แดง/ส้ม)',
+                        price: 20,
+                        desc: 'น้ำอัดลมเย็นซ่าชื่นใจ เลือกได้ทั้ง เป็ปซี่ น้ำเขียว น้ำแดง และน้ำส้ม',
+                        img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80',
+                        toppings: [
+                            { name: 'น้ำแดงโซดา/มะนาว', price: 10 },
+                            { name: 'บ๊วยเค็มเพิ่มรส', price: 10 },
+                            { name: 'แก้วใหญ่พิเศษ', price: 10 }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // สร้างรายการเมนูทั้งหมดลงในหน้าเว็บ
+        function renderMenus() {
+            const container = document.getElementById('menu-categories-container');
+            if (!container) return;
+
+            container.innerHTML = MENU_CATEGORIES.map(category => {
+                // แถบแสดงระดับความเผ็ด 4 ระดับ (แสดงเฉพาะหมวดกะเพรา และไม่ต้องให้กด)
+                const spicinessHtml = category.showSpicinessBanner ? `
+                    <div class="mb-8 bg-brand-lightred/60 border border-brand-red/20 rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4 select-none pointer-events-none">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <div>
+                                <span class="font-prompt font-bold text-brand-dark text-sm sm:text-base block">ระดับความเผ็ดของเมนูผัดกะเพรา (มีให้เลือก 4 ระดับ)</span>
+                                <span class="text-xs text-brand-muted">สามารถแจ้งระดับความเผ็ดที่ต้องการกับทางร้านได้ทุกจาน</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <div class="bg-white border border-brand-border rounded-xl px-3 py-2 text-center shadow-xs">
+                                <span class="block text-[11px] font-prompt text-brand-muted">ระดับ 1</span>
+                                <span class="font-prompt font-semibold text-xs sm:text-sm text-emerald-700">ไม่เผ็ด 🫑</span>
+                            </div>
+                            <div class="bg-white border border-brand-border rounded-xl px-3 py-2 text-center shadow-xs">
+                                <span class="block text-[11px] font-prompt text-brand-muted">ระดับ 2</span>
+                                <span class="font-prompt font-semibold text-xs sm:text-sm text-amber-600">เผ็ดน้อย 🌶️</span>
+                            </div>
+                            <div class="bg-white border border-brand-border rounded-xl px-3 py-2 text-center shadow-xs">
+                                <span class="block text-[11px] font-prompt text-brand-muted">ระดับ 3</span>
+                                <span class="font-prompt font-semibold text-xs sm:text-sm text-orange-600">เผ็ดกลาง 🌶️🌶️</span>
+                            </div>
+                            <div class="bg-white border border-brand-border rounded-xl px-3 py-2 text-center shadow-xs">
+                                <span class="block text-[11px] font-prompt text-brand-muted">ระดับ 4</span>
+                                <span class="font-prompt font-semibold text-xs sm:text-sm text-brand-red">เผ็ดมาก 🌶️🌶️🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                ` : '';
+
+                const cardsHtml = category.items.map(item => {
+                    const itemToppings = item.toppings || category.toppings || [];
+                    const toppingsHtml = itemToppings.length > 0 ? `
+                        <div class="pt-3 border-t border-brand-border/60">
+                            <span class="block text-xs font-prompt font-semibold text-brand-muted mb-2">
+                                <i class="fa-solid fa-circle-plus text-brand-gold mr-1"></i> เพิ่มท็อปปิ้ง:
+                            </span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${itemToppings.map(tp => `
+                                    <button type="button"
+                                        onclick="toggleTopping(this, ${tp.price}, '${tp.name}')"
+                                        class="topping-btn cursor-pointer px-2.5 py-1.5 rounded-lg border border-brand-border bg-brand-cream hover:bg-brand-warmbg text-xs font-prompt text-brand-dark transition-all">
+                                        + ${tp.name} (฿${tp.price})
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : '';
+
+                    // การ์ดหมวดสุกี้ (มีปุ่มสลับ แห้ง / น้ำ พร้อมเปลี่ยนรูปภาพ + เพิ่มท็อปปิ้ง)
+                    if (category.isSuki) {
+                        const initialBadge = item.badge ? `${item.badge} • แบบแห้ง` : 'แบบแห้ง';
+                        const badgeClass = item.badge
+                            ? 'bg-brand-gold text-white'
+                            : 'bg-brand-dark/80 text-white';
+
+                        return `
+                            <div class="menu-item menu-card bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all flex flex-col"
+                                 data-base-price="${item.price}"
+                                 data-dry-title="${item.dryTitle}"
+                                 data-soup-title="${item.soupTitle}"
+                                 data-dry-desc="${item.dryDesc}"
+                                 data-soup-desc="${item.soupDesc}"
+                                 data-dry-img="${item.dryImg}"
+                                 data-soup-img="${item.soupImg}">
+                                <div class="relative h-52 overflow-hidden bg-gray-100">
+                                    <img src="${item.dryImg}"
+                                         onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
+                                         alt="${item.dryTitle}"
+                                         class="suki-img w-full h-full object-cover transition-all duration-300">
+                                    <span class="suki-badge absolute top-3 left-3 ${badgeClass} text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow">
+                                        ${initialBadge}
+                                    </span>
+                                </div>
+                                <div class="p-6 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-start justify-between gap-2 mb-2">
+                                            <h4 class="suki-title text-xl font-bold font-prompt text-brand-dark">${item.dryTitle}</h4>
+                                            <div class="text-right shrink-0">
+                                                <span class="price-display text-xl font-bold font-prompt text-brand-red">฿${item.price}</span>
+                                                <span class="topping-summary block text-[11px] font-prompt text-brand-gold font-medium"></span>
+                                            </div>
+                                        </div>
+                                        <p class="suki-desc text-brand-muted text-sm leading-relaxed mb-4">
+                                            ${item.dryDesc}
+                                        </p>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <!-- ปุ่มสลับ สุกี้แห้ง / สุกี้น้ำ -->
+                                        <div class="pt-3 border-t border-brand-border/60">
+                                            <span class="block text-xs font-prompt font-semibold text-brand-muted mb-2">เลือกรูปแบบสุกี้:</span>
+                                            <div class="grid grid-cols-2 gap-1.5 bg-brand-warmbg p-1 rounded-xl border border-brand-border">
+                                                <button type="button" onclick="toggleSukiType(this, 'dry')" class="suki-btn-dry cursor-pointer py-2 px-3 rounded-lg text-xs font-prompt font-semibold bg-brand-red text-white shadow-sm transition-all flex items-center justify-center gap-1.5">
+                                                    <i class="fa-solid fa-fire"></i> สุกี้แห้ง
+                                                </button>
+                                                <button type="button" onclick="toggleSukiType(this, 'soup')" class="suki-btn-soup cursor-pointer py-2 px-3 rounded-lg text-xs font-prompt font-semibold text-brand-dark hover:bg-white/70 transition-all flex items-center justify-center gap-1.5">
+                                                    <i class="fa-solid fa-bowl-food"></i> สุกี้น้ำ
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- ปุ่มเพิ่มท็อปปิ้ง -->
+                                        ${toppingsHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // การ์ดหมวดหมู่อื่นๆ (มีปุ่มเพิ่มท็อปปิ้ง + คำนวณราคาเรียลไทม์)
+                    const badgeHtml = item.badge ? `
+                        <span class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow">
+                            ${item.badge}
+                        </span>
+                    ` : '';
+
+                    return `
+                        <div class="menu-item menu-card bg-white rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition-all flex flex-col"
+                             data-base-price="${item.price}">
+                            <div class="relative h-52 overflow-hidden bg-gray-100">
+                                <img src="${item.img}"
+                                     onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
+                                     alt="${item.title}"
+                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                ${badgeHtml}
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start justify-between gap-2 mb-2">
+                                        <h4 class="text-xl font-bold font-prompt text-brand-dark">${item.title}</h4>
+                                        <div class="text-right shrink-0">
+                                            <span class="price-display text-xl font-bold font-prompt text-brand-red">฿${item.price}</span>
+                                            <span class="topping-summary block text-[11px] font-prompt text-brand-gold font-medium"></span>
+                                        </div>
+                                    </div>
+                                    <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                                        ${item.desc}
+                                    </p>
+                                </div>
+
+                                ${toppingsHtml}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="menu-category-group" data-category="${category.id}">
+                        <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-brand-border pb-4 mb-8 gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-xl ${category.iconBg} flex items-center justify-center text-xl shadow-sm shrink-0">
+                                    <i class="fa-solid ${category.icon}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl sm:text-3xl font-bold font-prompt text-brand-dark">${category.title}</h3>
+                                    <p class="text-sm text-brand-muted">${category.subtitle}</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-prompt bg-brand-warmbg text-brand-dark border border-brand-border px-3 py-1 rounded-full font-semibold self-start sm:self-auto shrink-0">
+                                ${category.tag}
+                            </span>
+                        </div>
+
+                        ${spicinessHtml}
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${cardsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // เรียกแสดงรายการเมนูทันที
+        renderMenus();
+
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function hideLoadingOverlay() {
+            if (!loadingOverlay) return;
+            loadingOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+            loadingOverlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(hideLoadingOverlay, 250);
+        });
+        setTimeout(hideLoadingOverlay, 1500);
+
+        // เปิด-ปิดเมนูบนมือถือ
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // เลื่อนไปยังส่วนต่างๆ อย่างนุ่มนวล
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        mobileMenu.classList.add('hidden');
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // กรองหมวดหมู่เมนูอาหาร (หัวข้อใหญ่)
+        function filterMenu(category, btnElement) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-brand-red', 'text-white');
+                btn.classList.add('bg-white', 'text-brand-dark');
+            });
+
+            btnElement.classList.add('active', 'bg-brand-red', 'text-white');
+            btnElement.classList.remove('bg-white', 'text-brand-dark');
+
+            const groups = document.querySelectorAll('.menu-category-group');
+            groups.forEach(group => {
+                if (category === 'all' || group.getAttribute('data-category') === category) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+        }
+
+        // สลับ สุกี้แห้ง <-> สุกี้น้ำ ในแต่ละรายการ (เปลี่ยนรูป ชื่อ และคำอธิบาย โดยอยู่ที่หน้าจอเดิม)
+        function toggleSukiType(btnElement, type) {
+            const card = btnElement.closest('.menu-card');
+            if (!card) return;
+
+            const imgEl = card.querySelector('.suki-img');
+            const titleEl = card.querySelector('.suki-title');
+            const descEl = card.querySelector('.suki-desc');
+            const badgeEl = card.querySelector('.suki-badge');
+            const dryBtn = card.querySelector('.suki-btn-dry');
+            const soupBtn = card.querySelector('.suki-btn-soup');
+
+            const isSoup = type === 'soup';
+            const nextImg = isSoup ? card.dataset.soupImg : card.dataset.dryImg;
+            const nextTitle = isSoup ? card.dataset.soupTitle : card.dataset.dryTitle;
+            const nextDesc = isSoup ? card.dataset.soupDesc : card.dataset.dryDesc;
+
+            if (imgEl && imgEl.getAttribute('src') !== nextImg) {
+                imgEl.style.opacity = '0.4';
+                setTimeout(() => {
+                    imgEl.src = nextImg;
+                    imgEl.alt = nextTitle;
+                    imgEl.style.opacity = '1';
+                }, 140);
+            }
+
+            if (titleEl) titleEl.textContent = nextTitle;
+            if (descEl) descEl.textContent = nextDesc;
+
+            if (badgeEl) {
+                if (isSoup) {
+                    badgeEl.textContent = 'แบบน้ำซุปกลมกล่อม 🍲';
+                    badgeEl.className = 'suki-badge absolute top-3 left-3 bg-brand-red text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow';
+                } else {
+                    badgeEl.textContent = 'แบบแห้งหอมกระทะ 🔥';
+                    badgeEl.className = 'suki-badge absolute top-3 left-3 bg-brand-gold text-white text-xs font-prompt px-3 py-1 rounded-full font-semibold shadow';
+                }
+            }
+
+            if (isSoup) {
+                soupBtn.classList.add('bg-brand-red', 'text-white', 'shadow-sm');
+                soupBtn.classList.remove('text-brand-dark', 'hover:bg-white/70');
+                dryBtn.classList.remove('bg-brand-red', 'text-white', 'shadow-sm');
+                dryBtn.classList.add('text-brand-dark', 'hover:bg-white/70');
+            } else {
+                dryBtn.classList.add('bg-brand-red', 'text-white', 'shadow-sm');
+                dryBtn.classList.remove('text-brand-dark', 'hover:bg-white/70');
+                soupBtn.classList.remove('bg-brand-red', 'text-white', 'shadow-sm');
+                soupBtn.classList.add('text-brand-dark', 'hover:bg-white/70');
+            }
+        }
+
+        // เพิ่ม/ลด ท็อปปิ้ง และคำนวณราคาแบบเรียลไทม์สำหรับทุกเมนู
+        function toggleTopping(btnElement, extraPrice, toppingName) {
+            const card = btnElement.closest('.menu-card');
+            if (!card) return;
+
+            const isSelected = btnElement.classList.toggle('selected');
+
+            if (isSelected) {
+                btnElement.classList.remove('bg-brand-cream', 'text-brand-dark', 'border-brand-border', 'hover:bg-brand-warmbg');
+                btnElement.classList.add('bg-brand-gold', 'text-white', 'border-brand-gold', 'font-semibold', 'shadow-sm');
+                btnElement.dataset.price = extraPrice;
+                btnElement.dataset.name = toppingName;
+                btnElement.innerHTML = `<i class="fa-solid fa-check mr-1"></i> ${toppingName} (+฿${extraPrice})`;
+            } else {
+                btnElement.classList.add('bg-brand-cream', 'text-brand-dark', 'border-brand-border', 'hover:bg-brand-warmbg');
+                btnElement.classList.remove('bg-brand-gold', 'text-white', 'border-brand-gold', 'font-semibold', 'shadow-sm');
+                delete btnElement.dataset.price;
+                delete btnElement.dataset.name;
+                btnElement.textContent = `+ ${toppingName} (฿${extraPrice})`;
+            }
+
+            // คำนวณราคารวมทั้งหมดของการ์ดนั้นแบบเรียลไทม์
+            const basePrice = parseInt(card.dataset.basePrice, 10) || 0;
+            const selectedBtns = card.querySelectorAll('.topping-btn.selected');
+            let totalExtra = 0;
+            const names = [];
+
+            selectedBtns.forEach(btn => {
+                totalExtra += parseInt(btn.dataset.price, 10) || 0;
+                if (btn.dataset.name) names.push(btn.dataset.name);
+            });
+
+            const priceDisplay = card.querySelector('.price-display');
+            const summaryDisplay = card.querySelector('.topping-summary');
+
+            if (priceDisplay) {
+                priceDisplay.textContent = `฿${basePrice + totalExtra}`;
+            }
+            if (summaryDisplay) {
+                summaryDisplay.textContent = names.length > 0 ? `เพิ่ม: ${names.join(', ')}` : '';
+            }
+        }
+    </script>
+</body>
+</html>
