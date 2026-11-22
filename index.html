@@ -72,23 +72,24 @@
 </head>
 <body class="bg-brand-cream text-brand-dark antialiased">
 
-    <!-- Loading Overlay Screen -->
-    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-brand-cream flex flex-col items-center justify-center transition-opacity duration-300 opacity-100 pointer-events-auto">
+    <!-- Loading Overlay Screen (แสดงตอนเปิดเว็บและตอนกดเปลี่ยนหน้า) -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-brand-cream/95 backdrop-blur-sm flex flex-col items-center justify-center transition-opacity duration-300 opacity-100 pointer-events-auto">
         <div class="relative flex items-center justify-center mb-4">
             <div class="w-20 h-20 border-4 border-brand-red/20 border-t-brand-red rounded-full animate-spin"></div>
             <div class="absolute w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
                 ส
             </div>
         </div>
-        <p class="font-prompt text-brand-dark text-lg font-semibold tracking-wide animate-pulse">
+        <p id="loading-text" class="font-prompt text-brand-dark text-lg font-semibold tracking-wide animate-pulse">
             กำลังโหลดข้อมูล...
         </p>
+        <span class="text-xs text-brand-muted font-sarabun mt-1">สุกี้วงษ์ศรี • อร่อยเต็มจาน อิ่มเต็มใจ</span>
     </div>
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-md border-b border-brand-border transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#hero" class="nav-link flex items-center gap-3">
+            <a href="#hero" data-page-name="หน้าแรก" class="nav-link flex items-center gap-3">
                 <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white text-xl font-bold font-prompt shadow-md">
                     ส
                 </div>
@@ -100,11 +101,11 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#hero" class="nav-link text-brand-dark hover:text-brand-red transition-colors">หน้าแรก</a>
-                <a href="#highlights" class="nav-link text-brand-dark hover:text-brand-red transition-colors">จุดเด่นร้าน</a>
-                <a href="#menu" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เมนูแนะนำ</a>
-                <a href="#about" class="nav-link text-brand-dark hover:text-brand-red transition-colors">เกี่ยวกับเรา</a>
-                <a href="#contact" class="nav-link text-brand-dark hover:text-brand-red transition-colors">ติดต่อ/พิกัดร้าน</a>
+                <a href="#hero" data-page-name="หน้าแรก" class="nav-link nav-item text-brand-red font-semibold transition-colors">หน้าแรก</a>
+                <a href="#highlights" data-page-name="จุดเด่นร้าน" class="nav-link nav-item text-brand-dark hover:text-brand-red transition-colors">จุดเด่นร้าน</a>
+                <a href="#menu" data-page-name="เมนูแนะนำ" class="nav-link nav-item text-brand-dark hover:text-brand-red transition-colors">เมนูแนะนำ</a>
+                <a href="#about" data-page-name="เกี่ยวกับเรา" class="nav-link nav-item text-brand-dark hover:text-brand-red transition-colors">เกี่ยวกับเรา</a>
+                <a href="#contact" data-page-name="ติดต่อ/พิกัดร้าน" class="nav-link nav-item text-brand-dark hover:text-brand-red transition-colors">ติดต่อ/พิกัดร้าน</a>
             </nav>
 
             <!-- Desktop Call CTA -->
@@ -123,19 +124,19 @@
 
         <!-- Mobile Nav Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-border px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#hero" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">หน้าแรก</a>
-            <a href="#highlights" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">จุดเด่นร้าน</a>
-            <a href="#menu" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เมนูแนะนำ</a>
-            <a href="#about" class="nav-link mobile-link block py-2 border-b border-brand-border/50 font-medium">เกี่ยวกับเรา</a>
-            <a href="#contact" class="nav-link mobile-link block py-2 font-medium">ติดต่อ/พิกัดร้าน</a>
+            <a href="#hero" data-page-name="หน้าแรก" class="nav-link nav-item mobile-link block py-2 border-b border-brand-border/50 text-brand-red font-semibold">หน้าแรก</a>
+            <a href="#highlights" data-page-name="จุดเด่นร้าน" class="nav-link nav-item mobile-link block py-2 border-b border-brand-border/50 font-medium">จุดเด่นร้าน</a>
+            <a href="#menu" data-page-name="เมนูแนะนำ" class="nav-link nav-item mobile-link block py-2 border-b border-brand-border/50 font-medium">เมนูแนะนำ</a>
+            <a href="#about" data-page-name="เกี่ยวกับเรา" class="nav-link nav-item mobile-link block py-2 border-b border-brand-border/50 font-medium">เกี่ยวกับเรา</a>
+            <a href="#contact" data-page-name="ติดต่อ/พิกัดร้าน" class="nav-link nav-item mobile-link block py-2 font-medium">ติดต่อ/พิกัดร้าน</a>
             <a href="tel:0942519483" class="mt-4 w-full bg-brand-red hover:bg-brand-redhover text-white py-3 rounded-xl font-prompt font-medium flex items-center justify-center gap-2">
                 <i class="fa-solid fa-phone"></i> โทรสั่งอาหาร 094-251-9483
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative bg-brand-dark text-white min-h-[520px] flex items-center justify-center overflow-hidden">
+    <!-- Hero Section (หน้าแรก) -->
+    <section id="hero" class="scroll-mt-20 relative bg-brand-dark text-white min-h-[520px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=80" alt="สุกี้วงษ์ศรี" class="w-full h-full object-cover opacity-35">
             <div class="hero-overlay absolute inset-0"></div>
@@ -153,18 +154,18 @@
                 เสิร์ฟความสดใหม่ด้วยวัตถุดิบคุณภาพ คัดสรรอย่างดี พร้อมน้ำจิ้มสุกี้รสเด็ดเข้มข้น หอมกลิ่นเต้าหู้ยี้และพริกกระเทียมสด
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#menu" class="nav-link w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
+                <a href="#menu" data-page-name="เมนูแนะนำ" class="nav-link w-full sm:w-auto bg-brand-red hover:bg-brand-redhover text-white px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all shadow-lg text-center">
                     ดูเมนูอาหาร
                 </a>
-                <a href="#contact" class="nav-link w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
-                    เส้นทางมายังร้าน
+                <a href="#contact" data-page-name="ติดต่อ/พิกัดร้าน" class="nav-link w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-prompt font-semibold text-lg transition-all text-center backdrop-blur-sm">
+                    เส้นทางมายังร้าน & เดลิเวรี่
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Highlights Section -->
-    <section id="highlights" class="py-16 bg-brand-warmbg border-b border-brand-border">
+    <!-- Highlights Section (จุดเด่นร้าน) -->
+    <section id="highlights" class="scroll-mt-20 py-16 bg-brand-warmbg border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-3xl font-bold font-prompt text-brand-dark mb-3">ทำไมต้องสุกี้วงษ์ศรี?</h2>
@@ -205,8 +206,8 @@
         </div>
     </section>
 
-    <!-- Menu Showcase Section -->
-    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Menu Showcase Section (เมนูแนะนำ) -->
+    <section id="menu" class="scroll-mt-20 py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-10">
             <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Our Menu</span>
             <h2 class="text-3xl sm:text-4xl font-bold font-prompt text-brand-dark mt-1 mb-4">รายการอาหารทั้งหมด</h2>
@@ -248,14 +249,15 @@
         <div id="menu-categories-container" class="space-y-20"></div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-brand-warmbg border-t border-b border-brand-border">
+    <!-- About Section (เกี่ยวกับเรา) -->
+    <section id="about" class="scroll-mt-20 py-20 bg-brand-warmbg border-t border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="relative">
                     <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-brand-cream">
                         <img 
                             src="https://i.postimg.cc/rz6T47TF/file-000000008c808211b2c02dab21ef8bc1.png" 
+                            loading="lazy"
                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=80';"
                             alt="บรรยากาศและอาหารร้านสุกี้วงษ์ศรี" 
                             class="w-full h-[400px] object-cover"
@@ -292,15 +294,16 @@
         </div>
     </section>
 
-    <!-- Location & Contact Section -->
-    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Location, Contact & Delivery Section (ติดต่อ/พิกัดร้าน & เดลิเวรี่) -->
+    <section id="contact" class="scroll-mt-20 py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Contact & Location</span>
-            <h2 class="text-3xl font-bold font-prompt text-brand-dark mt-1 mb-3">ที่ตั้งและการเดินทาง</h2>
-            <p class="text-brand-muted">แวะมาอิ่มอร่อยกับพวกเราได้ทุกวัน หรือโทรสั่งซื้อล่วงหน้าได้เลย</p>
+            <span class="text-brand-red font-prompt font-semibold tracking-wider text-sm uppercase">Contact, Location & Delivery</span>
+            <h2 class="text-3xl font-bold font-prompt text-brand-dark mt-1 mb-3">ที่ตั้งร้าน & ช่องทางสั่งอาหาร</h2>
+            <p class="text-brand-muted">แวะมาอิ่มอร่อยที่ร้าน โทรสั่งล่วงหน้า หรือสั่งผ่านแอปพลิเคชันเดลิเวรี่ได้เลย</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- ช่องทางการติดต่อ & พิกัดร้าน -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
                 <div class="w-14 h-14 bg-brand-lightred text-brand-red rounded-full flex items-center justify-center text-xl mb-4">
                     <i class="fa-solid fa-location-dot"></i>
@@ -336,6 +339,90 @@
                 </p>
             </div>
         </div>
+
+        <!-- ช่องทางสั่งอาหารออนไลน์ เดลิเวรี่ (LINE MAN, GrabFood, ShopeeFood, Robinhood) -->
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-brand-border shadow-sm">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="inline-flex items-center gap-1.5 bg-brand-goldlight text-brand-gold px-3.5 py-1 rounded-full text-xs font-prompt font-semibold mb-2">
+                    <i class="fa-solid fa-motorcycle"></i> Delivery Platforms
+                </span>
+                <h3 class="text-2xl font-bold font-prompt text-brand-dark">สั่งเดลิเวรี่ส่งตรงถึงบ้าน</h3>
+                <p class="text-sm text-brand-muted mt-1">ค้นหาร้าน <strong class="text-brand-dark">"สุกี้วงษ์ศรี"</strong> หรือกดเลือกแอปพลิเคชันด้านล่าง</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 1. LINE MAN (ไลน์แมน) -->
+                <a href="https://www.wongnai.com/businesses?q=%E0%B8%AA%E0%B8%B8%E0%B8%81%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%A9%E0%B9%8C%E0%B8%A8%E0%B8%A3%E0%B8%B5"
+                   target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center gap-4 p-4 rounded-2xl border-2 border-[#06C755]/25 bg-[#06C755]/[0.04] hover:bg-[#06C755] hover:border-[#06C755] transition-all duration-200 shadow-xs">
+                    <!-- LINE MAN Official-Style Logo Icon -->
+                    <div class="w-14 h-14 rounded-2xl bg-[#06C755] group-hover:bg-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
+                        <svg class="w-9 h-9 text-white group-hover:text-[#06C755] transition-colors" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M24 7C13.506 7 5 13.732 5 22.036c0 7.434 6.774 13.662 15.925 14.847.62.134 1.464.41 1.678.942.192.482.126 1.237.062 1.724l-.271 1.628c-.083.482-.384 1.886 1.652 1.028 2.036-.857 10.985-6.469 14.987-11.076C41.797 28.085 43 25.217 43 22.036 43 13.732 34.494 7 24 7Z" fill="currentColor"/>
+                            <text x="24" y="21.5" text-anchor="middle" fill="#06C755" class="group-hover:fill-white transition-colors" font-family="Prompt, sans-serif" font-weight="800" font-size="7.2" letter-spacing="0.3">LINE</text>
+                            <text x="24" y="29" text-anchor="middle" fill="#06C755" class="group-hover:fill-white transition-colors" font-family="Prompt, sans-serif" font-weight="800" font-size="7.2" letter-spacing="0.3">MAN</text>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="block font-prompt font-bold text-base text-brand-dark group-hover:text-white transition-colors">LINE MAN</span>
+                        <span class="block font-prompt text-xs text-[#059669] group-hover:text-white/90 font-medium transition-colors">ไลน์แมน • สั่งเลย <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
+                    </div>
+                </a>
+
+                <!-- 2. GrabFood (แกร็บฟู้ด) -->
+                <a href="https://food.grab.com/th/th/restaurants?search=%E0%B8%AA%E0%B8%B8%E0%B8%81%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%A9%E0%B9%8C%E0%B8%A8%E0%B8%A3%E0%B8%B5"
+                   target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center gap-4 p-4 rounded-2xl border-2 border-[#00B14F]/25 bg-[#00B14F]/[0.04] hover:bg-[#00B14F] hover:border-[#00B14F] transition-all duration-200 shadow-xs">
+                    <!-- GrabFood Official-Style Logo Icon -->
+                    <div class="w-14 h-14 rounded-2xl bg-[#00B14F] group-hover:bg-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
+                        <svg class="w-9 h-9 text-white group-hover:text-[#00B14F] transition-colors" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M35.5 22.5H24.5V27.5H30.8C29.9 30.8 27.2 33 23.8 33C19.2 33 15.8 29.3 15.8 24.5C15.8 19.7 19.2 16 23.8 16C26.3 16 28.4 17 29.9 18.6L33.6 14.9C31.1 12.4 27.7 10.8 23.8 10.8C16.2 10.8 10.2 16.9 10.2 24.5C10.2 32.1 16.2 38.2 23.8 38.2C31.4 38.2 36.6 32.8 36.6 25.1C36.6 24.1 36.4 23.2 35.5 22.5Z" fill="currentColor"/>
+                            <circle cx="36" cy="13" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="block font-prompt font-bold text-base text-brand-dark group-hover:text-white transition-colors">GrabFood</span>
+                        <span class="block font-prompt text-xs text-[#008F3F] group-hover:text-white/90 font-medium transition-colors">แกร็บฟู้ด • สั่งเลย <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
+                    </div>
+                </a>
+
+                <!-- 3. ShopeeFood (ช้อปปี้ฟู้ด) -->
+                <a href="https://shopeefood.co.th/"
+                   target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center gap-4 p-4 rounded-2xl border-2 border-[#EE4D2D]/25 bg-[#EE4D2D]/[0.04] hover:bg-[#EE4D2D] hover:border-[#EE4D2D] transition-all duration-200 shadow-xs">
+                    <!-- ShopeeFood Official-Style Logo Icon -->
+                    <div class="w-14 h-14 rounded-2xl bg-[#EE4D2D] group-hover:bg-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
+                        <svg class="w-9 h-9 text-white group-hover:text-[#EE4D2D] transition-colors" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M18 16V14C18 10.686 20.686 8 24 8C27.314 8 30 10.686 30 14V16H36.5C37.6 16 38.5 16.9 38.4 18L36.8 37.5C36.6 39.5 35 41 33 41H15C13 41 11.4 39.5 11.2 37.5L9.6 18C9.5 16.9 10.4 16 11.5 16H18ZM20.5 16H27.5V14C27.5 12.067 25.933 10.5 24 10.5C22.067 10.5 20.5 12.067 20.5 14V16Z" fill="currentColor"/>
+                            <!-- Fork & Spoon cutout inside bag -->
+                            <path d="M20 22V27.5C20 28.6 20.9 29.5 22 29.5V35H23.5V29.5C24.6 29.5 25.5 28.6 25.5 27.5V22H24.2V26.2H23.3V22H22.2V26.2H21.3V22H20ZM28.5 22C27.1 22 26 23.6 26 25.5C26 27.1 26.8 28.4 27.8 28.8V35H29.3V28.8C30.3 28.4 31 27.1 31 25.5C31 23.6 29.9 22 28.5 22Z" fill="#EE4D2D" class="group-hover:fill-white transition-colors"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="block font-prompt font-bold text-base text-brand-dark group-hover:text-white transition-colors">ShopeeFood</span>
+                        <span class="block font-prompt text-xs text-[#D93819] group-hover:text-white/90 font-medium transition-colors">ช้อปปี้ฟู้ด • สั่งเลย <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
+                    </div>
+                </a>
+
+                <!-- 4. Robinhood (โรบินฮู้ด) -->
+                <a href="https://robinhood.in.th/"
+                   target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center gap-4 p-4 rounded-2xl border-2 border-[#6B21A8]/25 bg-[#6B21A8]/[0.04] hover:bg-[#6B21A8] hover:border-[#6B21A8] transition-all duration-200 shadow-xs">
+                    <!-- Robinhood Official-Style Logo Icon -->
+                    <div class="w-14 h-14 rounded-2xl bg-[#6B21A8] group-hover:bg-white flex items-center justify-center shrink-0 shadow-sm transition-colors">
+                        <svg class="w-9 h-9 text-white group-hover:text-[#6B21A8] transition-colors" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <!-- Stylized Robinhood Hood + R emblem -->
+                            <path d="M13 36V14C13 11.8 14.8 10 17 10H26.5C32.3 10 36.5 13.8 36.5 19.2C36.5 23.4 33.9 26.7 29.9 27.9L36.5 36H30.2L24.4 28.5H18.5V36H13ZM18.5 23.8H26C29.1 23.8 31 22 31 19.2C31 16.4 29.1 14.7 26 14.7H18.5V23.8Z" fill="currentColor"/>
+                            <path d="M29 8.5C32.5 8.2 35.8 9.8 37.5 12.5C34.5 12.2 31.5 10.8 29 8.5Z" fill="#EC4899"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="block font-prompt font-bold text-base text-brand-dark group-hover:text-white transition-colors">Robinhood</span>
+                        <span class="block font-prompt text-xs text-[#6B21A8] group-hover:text-white/90 font-medium transition-colors">โรบินฮู้ด • สั่งเลย <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -352,14 +439,27 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-4">
-                    <a href="tel:0942519483" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="โทร 0942519483">
+                <!-- ปุ่มลัดติดต่อ & เดลิเวรี่ใน Footer -->
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="tel:0942519483" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="โทร 0942519483" title="โทร 0942519483">
                         <i class="fa-solid fa-phone"></i>
                     </a>
-                    <a href="https://line.me/ti/p/~@sukiwongsri" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="Line">
+                    <a href="https://line.me/ti/p/~@sukiwongsri" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-[#06C755] hover:text-white transition-all" aria-label="Line" title="Line @sukiwongsri">
                         <i class="fa-brands fa-line"></i>
                     </a>
-                    <a href="#contact" class="nav-link w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="พิกัดร้าน">
+                    <a href="https://www.wongnai.com/businesses?q=%E0%B8%AA%E0%B8%B8%E0%B8%81%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%A9%E0%B9%8C%E0%B8%A8%E0%B8%A3%E0%B8%B5" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-[#06C755]/20 text-[#4ADE80] hover:bg-[#06C755] hover:text-white text-xs font-prompt font-medium transition-all">
+                        LINE MAN
+                    </a>
+                    <a href="https://food.grab.com/th/th/restaurants?search=%E0%B8%AA%E0%B8%B8%E0%B8%81%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%A9%E0%B9%8C%E0%B8%A8%E0%B8%A3%E0%B8%B5" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-[#00B14F]/20 text-[#4ADE80] hover:bg-[#00B14F] hover:text-white text-xs font-prompt font-medium transition-all">
+                        GrabFood
+                    </a>
+                    <a href="https://shopeefood.co.th/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-[#EE4D2D]/20 text-[#FB923C] hover:bg-[#EE4D2D] hover:text-white text-xs font-prompt font-medium transition-all">
+                        ShopeeFood
+                    </a>
+                    <a href="https://robinhood.in.th/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-[#6B21A8]/30 text-[#C084FC] hover:bg-[#6B21A8] hover:text-white text-xs font-prompt font-medium transition-all">
+                        Robinhood
+                    </a>
+                    <a href="#contact" data-page-name="ติดต่อ/พิกัดร้าน" class="nav-link w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:bg-brand-red hover:text-white transition-all" aria-label="พิกัดร้าน" title="พิกัดร้าน">
                         <i class="fa-solid fa-location-dot"></i>
                     </a>
                 </div>
@@ -903,6 +1003,7 @@
                                  data-soup-img="${item.soupImg}">
                                 <div class="relative h-52 overflow-hidden bg-gray-100">
                                     <img src="${item.dryImg}"
+                                         loading="lazy"
                                          onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
                                          alt="${item.dryTitle}"
                                          class="suki-img w-full h-full object-cover transition-all duration-300">
@@ -958,6 +1059,7 @@
                              data-base-price="${item.price}">
                             <div class="relative h-52 overflow-hidden bg-gray-100">
                                 <img src="${item.img}"
+                                     loading="lazy"
                                      onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
                                      alt="${item.title}"
                                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
@@ -1014,8 +1116,18 @@
         renderMenus();
 
         const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingText = document.getElementById('loading-text');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        let loadingTimer = null;
+
+        function showLoadingOverlay(message = 'กำลังโหลดข้อมูล...') {
+            if (!loadingOverlay) return;
+            if (loadingTimer) clearTimeout(loadingTimer);
+            if (loadingText) loadingText.textContent = message;
+            loadingOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            loadingOverlay.classList.add('opacity-100', 'pointer-events-auto');
+        }
 
         function hideLoadingOverlay() {
             if (!loadingOverlay) return;
@@ -1026,14 +1138,28 @@
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(hideLoadingOverlay, 250);
         });
-        setTimeout(hideLoadingOverlay, 1500);
+        setTimeout(hideLoadingOverlay, 1200);
 
         // เปิด-ปิดเมนูบนมือถือ
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // เลื่อนไปยังส่วนต่างๆ อย่างนุ่มนวล
+        // อัปเดตสถานะเมนูที่กำลังเลือกอยู่
+        function setActiveNavItem(targetId) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === targetId) {
+                    item.classList.add('text-brand-red', 'font-semibold');
+                    item.classList.remove('text-brand-dark');
+                } else {
+                    item.classList.remove('text-brand-red', 'font-semibold');
+                    item.classList.add('text-brand-dark');
+                }
+            });
+        }
+
+        // แสดงหน้าโหลดทุกครั้งที่กดเปลี่ยนหน้า (หน้าแรก, จุดเด่นร้าน, เมนูแนะนำ, เกี่ยวกับเรา, ติดต่อ/พิกัดร้าน)
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -1043,7 +1169,15 @@
                     if (targetElement) {
                         e.preventDefault();
                         mobileMenu.classList.add('hidden');
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        setActiveNavItem(targetId);
+
+                        const pageName = link.getAttribute('data-page-name') || link.textContent.trim();
+                        showLoadingOverlay(`กำลังเปิดหน้า "${pageName}"...`);
+
+                        loadingTimer = setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+                            setTimeout(hideLoadingOverlay, 180);
+                        }, 320);
                     }
                 }
             });
